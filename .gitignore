@@ -1,3 +1,6 @@
+# thumbs.db windows file
+*.db
+
 # Logs
 logs
 *.log
