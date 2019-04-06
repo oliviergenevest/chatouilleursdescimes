@@ -22,7 +22,7 @@ const About = () => {
         </p>
        <a title="Vente de billets en ligne" href="https://www.billetweb.fr/shop.php?event=chatouilleurs-des-cimes"  className="shop_frame"  target="_blank"  data-src="https://www.billetweb.fr/shop.php?event=chatouilleurs-des-cimes"  data-max-width="100%"  data-initial-height="600" data-scrolling="no"  data-id="chatouilleurs-des-cimes"  data-resize="1">Vente de billets en ligne</a><script type="text/javascript" src="https://www.billetweb.fr/js/export.js"></script>
       </AnimatedBox>
-    </Layout>
+    </Layout> 
   )
 }
 
