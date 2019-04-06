@@ -1,0 +1,6 @@
+- name: "Réservation"
+  link: "/projects"
+- name: "Contacts"
+  link: "/about"
+- name: "Découvrir"
+  link: "/about"
