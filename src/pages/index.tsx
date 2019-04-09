@@ -213,13 +213,14 @@ const logoAnimation = useSpring({
               </AnimatedBox>
               <AnimatedBox py={[4, 5, 6, 7]} style={ctaAnimation} >
                 <PButton color="red" py={4} px={8}>
-                 Infos au <span style={{'whiteSpace':'nowrap'}}>06 49 00 99 20</span>
+              
+                 <a href="https://www.billetweb.fr/chatouilleurs-des-cimes" target="blank" style={{'color':'black'}}>Réservation en ligne</a>
                </PButton>
               </AnimatedBox>
-              <a href="https://www.billetweb.fr/chatouilleurs-des-cimes" target="blank">Réservation en ligne</a>
+              
               <AnimatedBox style={contentAnimation}>
                 <p>Ouvert toute l'année, dès 7 ans, adapté handisport, découvrez la grimpe d'arbres sur des sites remarquables à Saint-Julien-de-Peyrolas, aux portes des Gorges de l'Ardèche.</p>
-<p><FaFacebook size="50px"/><br/>Retrouvez toutes les infos sur notre page <a href={'https://www.facebook.com/'+`${siteConfig.facebookPageID}`} target="blank" title="facebook" >facebook</a></p>
+<p><a href={'https://www.facebook.com/'+`${siteConfig.facebookPageID}`} target="blank" title="page facebook des chatouilleurs des cimes" ><FaFacebook size="50px"/></a><br/>Retrouvez toutes les infos sur notre page <a href={'https://www.facebook.com/'+`${siteConfig.facebookPageID}`} target="blank" title="page facebook des chatouilleurs des cimes" >facebook</a> ou par téléphone au <span style={{'whiteSpace':'nowrap'}}>06 49 00 99 20</span>.</p>
               </AnimatedBox>
 
           </Section>

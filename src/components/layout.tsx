@@ -5,7 +5,7 @@ import { readableColor } from 'polished'
 import 'typeface-work-sans'
 import 'typeface-boogaloo'
 import 'typeface-acme'
-import { Box, Flex, Button } from '../elements'
+import { AnimatedBox, Box, Flex, Button } from '../elements'
 import Wave from '../elements/Wave.tsx'
 import theme from '../../config/theme'
 import reset from '../styles/reset'
@@ -267,11 +267,14 @@ const Layout = ({ children, color, header, footer }: LayoutProps) => {
                   */}
 
                   </Nav>
-                  <Box py={0} px={[2, 2, 3, 3]} >
-                    <PButton color="red" py={4} px={8}>
-                     Réservation
-                   </PButton>
-                   </Box>
+                
+                  <AnimatedBox py={[2, 2, 3, 3]}  >
+                <PButton color="red" py={4} px={8}>
+              
+                 <a href="https://www.billetweb.fr/chatouilleurs-des-cimes" target="blank" style={{'color':'black'}}>Réservation en ligne</a>
+               </PButton>
+              </AnimatedBox>
+                 
               </Flex>
             </Header>
           </Headroom>

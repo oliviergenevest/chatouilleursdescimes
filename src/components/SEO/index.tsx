@@ -189,7 +189,7 @@ const SEO = ({ title, desc, banner, pathname, node, individual }: Props) => {
         {!individual && <script type="application/ld+json">{JSON.stringify(schemaOrgWebPage)}</script>}
         {individual && <script type="application/ld+json">{JSON.stringify(schemaArticle)}</script>}
         <script type="application/ld+json">{JSON.stringify(breadcrumb)}</script>
-        <script type="text/javascript" src="https://www.billetweb.fr/js/export.js"></script>
+  
       </Helmet>
       <Facebook
         desc={seo.description}
