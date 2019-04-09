@@ -222,7 +222,7 @@ type LayoutProps = { children: React.ReactNode } & typeof defaultProps
 const defaultProps = {
   color: 'black',
   header:true,
-  footer:true,
+  footer:false,
 }
 
 interface QueryResult {
@@ -264,7 +264,7 @@ const Layout = ({ children, color, header, footer }: LayoutProps) => {
                     {item.name}
                   </Link>
                   ))} 
-                  */
+                  */}
 
                   </Nav>
                   <Box py={0} px={[2, 2, 3, 3]} >
