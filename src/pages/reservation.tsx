@@ -18,7 +18,7 @@ const Réservation = () => {
         <h1>Réservation</h1>
        <p>Bienvenue dans notre billetterie en ligne avec paiement sécurisé par carte bancaire.
 Commandez vos billets en quelques clics et recevez vos tickets électroniques nominatifs, directement par e-mail.</p>
-       <a title="Vente de billets en ligne" href="https://www.billetweb.fr/shop.php?event=chatouilleurs-des-cimes"  className="shop_frame"  target="_blank"  data-src="https://www.billetweb.fr/shop.php?event=chatouilleurs-des-cimes"  data-max-width="100%"  data-initial-height="600" data-scrolling="no"  data-id="chatouilleurs-des-cimes"  data-resize="1">Billetterie en ligne</a><script type="text/javascript" src="https://www.billetweb.fr/js/export.js"></script>
+       <a title="Vente de billets en ligne" href="https://www.billetweb.fr/shop.php?event=chatouilleurs-des-cimes"  className="shop_frame"  target="_blank"  data-src="https://www.billetweb.fr/shop.php?event=chatouilleurs-des-cimes"  data-max-width="100%"  data-initial-height="600" data-scrolling="no"  data-id="chatouilleurs-des-cimes"  data-resize="1">Vente de billets en ligne</a>
       </AnimatedBox>
     </Layout> 
   )

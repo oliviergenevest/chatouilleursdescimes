@@ -216,7 +216,7 @@ const logoAnimation = useSpring({
                  Infos au <span style={{'whiteSpace':'nowrap'}}>06 49 00 99 20</span>
                </PButton>
               </AnimatedBox>
-              <Link to="/reservation">Réservation</Link>
+              <a href="https://www.billetweb.fr/chatouilleurs-des-cimes" target="blank">Réservation en ligne</a>
               <AnimatedBox style={contentAnimation}>
                 <p>Ouvert toute l'année, dès 7 ans, adapté handisport, découvrez la grimpe d'arbres sur des sites remarquables à Saint-Julien-de-Peyrolas, aux portes des Gorges de l'Ardèche.</p>
 <p><FaFacebook size="50px"/><br/>Retrouvez toutes les infos sur notre page <a href={'https://www.facebook.com/'+`${siteConfig.facebookPageID}`} target="blank" title="facebook" >facebook</a></p>
