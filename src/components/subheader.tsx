@@ -66,8 +66,7 @@ const SubHeader = ({ color }: LayoutProps) => {
               	 	<Flex>
               	 		 <a href={'https://www.facebook.com/'+`${siteConfig.facebookPageID}`} target="blank" title="facebook">
               	 			<FaFacebook size={20} />
-              	 		</a>
-              	 		 06 49 00 99 20
+              	 		</a> <span>06 49 00 99 20</span>
               	 	</Flex>
                </Right>
             </Flex>

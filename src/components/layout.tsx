@@ -258,12 +258,13 @@ const Layout = ({ children, color, header, footer }: LayoutProps) => {
               >
                  <Link to="/" aria-label="Accueil"><Logo fixed/></Link>
                   <Nav  color={color}>
-                   
+                   {/*}
                    {data.navigation.edges.map(({ node: item }) => (
                   <Link to={item.link} key={item.name}>
                     {item.name}
                   </Link>
                   ))} 
+                  */
 
                   </Nav>
                   <Box py={0} px={[2, 2, 3, 3]} >
