@@ -6,7 +6,7 @@ import theme from '../../config/theme.ts'
 const Wrapper = styled.div`
   position: absolute;
   width: 100%;
-  z-index: 1;
+  z-index: -1;
   ${props => props.orientation === 'top' && 'top: 0'};
   ${props => props.orientation === 'top' && 'transform: matrix(1, 0, 0, -1, 0, 0)'};
   ${props => props.orientation === 'bottom' && 'bottom: 0'};
@@ -19,9 +19,9 @@ const InnerWave = styled.div`
     display: block;
     position: absolute;
     width: 100%;
-    height: 5.5rem;
+    height: 4.5rem;
     @media (max-width: ${props => props.theme.breakpoints[0]}) {
-      height: 4.5rem;
+      height: 3.5rem;
     }
   }
 `
@@ -38,7 +38,7 @@ const smoooooth = keyframes`
 `
 const WaveSVG = styled.svg`
   path {
-    fill: ${theme.colors.white};
+    fill: ${theme.colors.black};
     width: 100%;
     animation: ${smoooooth} 25s linear infinite alternate;
   }

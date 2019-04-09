@@ -131,7 +131,7 @@ const Project: React.FunctionComponent<PageProps> = ({ data: { project, images }
         </PBox>
       </Content>
       <PBox textAlign="center" py={10} px={[6, 6, 8, 10]}>
-        <h2>Infos au 06 49 00 99 20 ou sur notre page facebook.</h2>
+        <h2>Infos au 06 49 00 99 20</h2>
         <PButton color={project.color} py={4} px={8}>
          Billeterie
         </PButton>

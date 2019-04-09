@@ -2,23 +2,32 @@ import React from 'react'
 import { graphql, StaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
 
-
-const Logo = () => (
+/* fixed pour logo header , fluid pour le reste*/
+const Logo = ({fixed, fluid}) => (
 
 <StaticQuery query={graphql`
   query {
-    file(relativePath: { eq: "logo.png" }) {
+   file(relativePath: { eq: "logo.png" }) {
       childImageSharp {
-        fixed(width: 160) {
-          ...GatsbyImageSharpFixed_tracedSVG
+        fixed(width: 120) {
+          ...GatsbyImageSharpFixed 
+        }
+        fluid(maxWidth: 550) {
+          ...GatsbyImageSharpFluid_tracedSVG
         }
       }
     }
+
   }
 `}
 
  render = { 
-    data => (<Img fixed={data.file.childImageSharp.fixed} /> )
+    data => ( 
+           <>
+             { fixed && <Img fixed={data.file.childImageSharp.fixed} /> }
+             { fluid && <Img fluid={data.file.childImageSharp.fluid} /> }
+           </>
+      )
      
  }
 

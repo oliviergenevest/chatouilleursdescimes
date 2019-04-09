@@ -2,9 +2,10 @@ import React from 'react'
 import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
 import styled from 'styled-components'
-import { animated, useSpring, config } from 'react-spring'
-
+import { FaFacebook } from 'react-icons/fa';
+import { config, useSpring, animated } from 'react-spring'
 import Logo from '../components/logo'
+import Ribbon from '../components/ribbon'
 import Layout from '../components/layout'
 import patternWhiteSVG from '../images/pattern-white.svg'
 
@@ -22,6 +23,8 @@ type PageProps = {
 
 const Area = styled(animated.section)`
  min-height:100vh;
+ 
+  flex-grow: 1;
   display:grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: 1fr 1fr;
@@ -33,7 +36,7 @@ const Area = styled(animated.section)`
   @media (max-width: ${props => props.theme.breakpoints[1]}) {
     height: auto;
     grid-template-columns: 1fr;
-    grid-template-rows: 400px 1fr;
+    grid-template-rows: 300px 1fr;
     grid-template-areas:
       'illustration'
       'content'
@@ -47,7 +50,8 @@ const Area = styled(animated.section)`
 const Content = styled(Flex)`
   grid-area: content;
   color:white;
-  width:100%;
+  position:relative;
+
 `
 
 
@@ -60,7 +64,12 @@ const CtaButton = styled(Flex)`
 const Illustration = styled.div`
   grid-area: illustration;
   background-color:dodgerblue;
-  position:relative;
+ 
+  position: relative;
+ 
+  
+
+
   // gradient noir => transparent sur zone illustration
   &::before{
     content:'';
@@ -164,34 +173,55 @@ const Index: React.FunctionComponent<PageProps> = ({ data: { bgImage } }) => {
     from: { opacity: 0 },
     to: { opacity: 1 },
   })
+const contentAnimation = useSpring({
+    config: config.slow,
+    delay: 600, 
+    from: { opacity: 0, transform: 'translate3d(0, 30px, 0)' },
+    to: { opacity: 1, transform: 'translate3d(0, 0, 0)' },
+  })
+const ctaAnimation = useSpring({
+    config: config.slow,
+    delay: 900, 
+    from: { opacity: 0, transform: 'translate3d(0, 30px, 0)' },
+    to: { opacity: 1, transform: 'translate3d(0, 0, 0)' },
+  })
+const logoAnimation = useSpring({
+    config: config.slow,
+    from: { opacity: 1, transform: 'translate3d(0, -80px, 0)' },
+    to: { opacity: 1, transform: 'translate3d(0, 0, 0)' },
+  })
 
   return (
-    <Layout >
+    <Layout color="black" header={false} footer={false}>
       <SEO title={`${siteConfig.siteTitle}`} desc={ `${siteConfig.siteTitle}` | `${siteConfig.siteHeadline}`}/>
        <Area>
       
-       <Content   py={[0, 0, 12, 12]}  mb={[10,10,0,0]}flexDirection="column" alignItems="center" justifyContent= "center">
-          <Section 
-            
+       <Content   py={[2, 3, 4, 5]}  mb={[10,10,0,0]} flexDirection="column" alignItems="center" justifyContent= "center">
+         
+          <Section  
+            style={{'maxWidth':"550px"}}
             px={[6, 6, 8, 10]}  
             flexDirection="column" 
             alignItems="flex-start" 
             justifyContent="center"
-           >
-             <Box>
-              <Hero>Une aventure géniali’cime !</Hero>
-              <p>Vivez une expérience insolite au cœur des arbres sur des sites exceptionnels à travers un panel d’activités sportives, ludiques et sensationnelles accessibles à tous.</p>
-              </Box>
-          <Box py={[4, 5, 6, 7]}  >
-            <PButton color="red" py={4} px={8}>
-             Réservations au 06 49 00 99 20
-           </PButton>
-           </Box>
-             <Box  >
-            <p>Saint-Julien-de-Peyrolas (Gard) </p><p>
-            Retrouvez toutes les infos sur notre page <a href={'https://www.facebook.com/'+`${siteConfig.facebookPageID}`} target="blank" title="facebook" >facebook</a></p>
-            
-              </Box>
+
+           > 
+              <AnimatedBox style={logoAnimation} width="100%" ><Logo fluid/></AnimatedBox>
+              <AnimatedBox style={contentAnimation}>
+                <Hero >Une aventure géniali’cime !</Hero>
+                <p>Vivez une expérience insolite au cœur des arbres sur des sites exceptionnels à travers un panel d’activités sportives, ludiques et sensationnelles accessibles à tous.</p>
+              </AnimatedBox>
+              <AnimatedBox py={[4, 5, 6, 7]} style={ctaAnimation} >
+                <PButton color="red" py={4} px={8}>
+                 Infos au <span style={{'whiteSpace':'nowrap'}}>06 49 00 99 20</span>
+               </PButton>
+              </AnimatedBox>
+              <Link to="/reservation">Réservation</Link>
+              <AnimatedBox style={contentAnimation}>
+                <p>Ouvert toute l'année, dès 7 ans, adapté handisport, découvrez la grimpe d'arbres sur des sites remarquables à Saint-Julien-de-Peyrolas, aux portes des Gorges de l'Ardèche.</p>
+<p><FaFacebook size="50px"/><br/>Retrouvez toutes les infos sur notre page <a href={'https://www.facebook.com/'+`${siteConfig.facebookPageID}`} target="blank" title="facebook" >facebook</a></p>
+              </AnimatedBox>
+
           </Section>
        </Content>
       {/* <CtaButton alignItems="flex-end" justifyContent= "center">
@@ -202,6 +232,7 @@ const Index: React.FunctionComponent<PageProps> = ({ data: { bgImage } }) => {
            </Box>
        </CtaButton>*/}
        <Illustration> 
+        <Ribbon text="#GrimpeArbre #nouveauté2019"/>
          <Img 
             fluid={bgImage.childImageSharp.fluid}
             className="bgImage"

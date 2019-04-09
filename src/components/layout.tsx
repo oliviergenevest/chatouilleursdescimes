@@ -5,12 +5,14 @@ import { readableColor } from 'polished'
 import 'typeface-work-sans'
 import 'typeface-boogaloo'
 import 'typeface-acme'
-import { Box, Flex } from '../elements'
+import { Box, Flex, Button } from '../elements'
 import Wave from '../elements/Wave.tsx'
 import theme from '../../config/theme'
 import reset from '../styles/reset'
 
 import Logo from './logo'
+import SubHeader from './subheader'
+import Footer from './footer'
 import Headroom from 'react-headroom'
 import headroomCss from './headroom'
 
@@ -129,12 +131,9 @@ flex-direction:column;
 `
 
 const Header = styled(Box)<{ bg: string }>`
-  z-index:1;
-  position: absolute;
-  top:0;
-  left:0;
+   position: relative;
   width:100%;
-  background:transparent;
+  background-color:black;
   @media (max-width: ${props => props.theme.breakpoints[1]}) {
     position: relative;
     width: 100%;
@@ -160,17 +159,19 @@ const Header = styled(Box)<{ bg: string }>`
     position: relative;
     width: 100%;
   }
-*/
+
   svg {
     fill: ${props => readableColor(`${props.bg}`)};
-  }
+  }*/
 `
+
 
 const Nav = styled(Flex)<{ color: string }>`
   a {
+   /* text-transform:uppercase;*/
     text-decoration: none;
     color: ${props => readableColor(`${props.color}`)};
-    font-size: ${props => props.theme.fontSizes[3]};
+    font-size: ${props => props.theme.fontSizes[1]};
     line-height: 1.5;
      margin-left: ${props => props.theme.space[4]};
     &:hover,
@@ -180,7 +181,7 @@ const Nav = styled(Flex)<{ color: string }>`
     }
 
     @media (max-width: ${props => props.theme.breakpoints[2]}) {
-      font-size: ${props => props.theme.fontSizes[2]};
+      font-size: ${props => props.theme.fontSizes[1]};
       margin-left: ${props => props.theme.space[4]};
     }
 
@@ -197,6 +198,7 @@ const Nav = styled(Flex)<{ color: string }>`
 `
 
 const Main = styled.main`
+    position:relative;
     flex-grow:1; 
     display: flex;
     align-items: center;
@@ -208,58 +210,19 @@ const Main = styled.main`
 `
 
 
-//const Footer = styled.footer<{ color: string }>`
-const Footer = styled(Box)<{ color: string }>`
-  z-index:1;
-  position: relative;
-  bottom:0;
-  left:0;
-  width:100%;
-  
-/*  background: #A4CE3C;
-  
-background: -webkit-linear-gradient(top left, #A4CE3C, #91AE4A);
-background: -moz-linear-gradient(top left, #A4CE3C, #91AE4A);
-background: linear-gradient(top left, #A4CE3C, #91AE4A);
-  position: relative;
-  margin-top:5rem;
-  padding-top: 10rem;*/
- /* background-color:  ${props =>props.color}
-  @media (max-width: ${props => props.theme.breakpoints[1]}) {
-    padding-top: 7rem;
-  }*/
-
-  /*position: fixed;
-  width: ${props => props.theme.sidebarWidth.big};
-  bottom: 0;
-
-  background: ${props => props.color};
-
-  color: ${props => readableColor(`${props.color}`, `${props.theme.colors.grey}`, '#c3c3c3')};
-
-  a {
-    color: ${props => readableColor(`${props.color}`)};
-    text-decoration: none;
-    &:hover {
-      color: ${props => props.theme.colors.primary};
-    }
-  }
-
-  @media (max-width: ${props => props.theme.breakpoints[4]}) {
-    width: ${props => props.theme.sidebarWidth.normal};
-  }
-
-  @media (max-width: ${props => props.theme.breakpoints[2]}) {
-    position: relative;
-    width: 100%;
-  }*/
-
+const PButton = styled(Button)<{ color: string }>`
+  background: ${props => (props.color === 'white' ? 'black' : props.color)};
+  background: ${props => props.theme.colors.primary};
+  color: ${props => readableColor(props.color === 'white' ? 'black' : props.color)};
+  color:black;
 `
 
 type LayoutProps = { children: React.ReactNode } & typeof defaultProps
 
 const defaultProps = {
   color: 'black',
+  header:true,
+  footer:true,
 }
 
 interface QueryResult {
@@ -273,53 +236,50 @@ interface QueryResult {
   }
 }
 
-const Layout = ({ children, color }: LayoutProps) => {
+const Layout = ({ children, color, header, footer }: LayoutProps) => {
   const data: QueryResult = useStaticQuery(query)
 
   return (
     <ThemeProvider theme={theme}>
       <>
         <GlobalStyles />
-        <Headroom calcHeightOnResize disableInlineStyles>
-              <Flex
-                flexWrap="nowrap"
-                flexDirection={['row', 'row', 'row', 'row']}
-                alignItems={['center', 'center', 'center', 'center']}
-                justifyContent="space-between"
-              >
-                <Box >
-                
-                   <Link to="/" aria-label="Accueil"><Logo /></Link>
-                  <Link to="/mentions-legales">Mentions légales</Link>
-                </Box>
-              </Flex>
-            </Headroom>
+     
         <Wrapper>
+          {header &&
+          <Headroom calcHeightOnResize disableInlineStyles>
+           <SubHeader/>
+           <Header bg={color} as="header" m={0} py={[2,4,6]}   px={[6, 6, 8, 10]}  >
 
-           <Header bg={color} as="header"  py={[2,4,6]}   px={[6, 6, 8, 10]}  >
                <Flex
                 flexWrap="nowrap"
                 flexDirection={['row', 'row', 'row', 'row']}
                 alignItems={['center', 'center', 'center', 'center']}
                 justifyContent="space-between"
               >
-                <Box >
-                
-                   <Link to="/" aria-label="Accueil"><Logo /></Link>
-                  <Link to="/mentions-legales">Mentions légales</Link>
-                </Box>
+                 <Link to="/" aria-label="Accueil"><Logo fixed/></Link>
+                  <Nav  color={color}>
+                   
+                   {data.navigation.edges.map(({ node: item }) => (
+                  <Link to={item.link} key={item.name}>
+                    {item.name}
+                  </Link>
+                  ))} 
+
+                  </Nav>
+                  <Box py={0} px={[2, 2, 3, 3]} >
+                    <PButton color="red" py={4} px={8}>
+                     Réservation
+                   </PButton>
+                   </Box>
               </Flex>
-          </Header>
-          
+            </Header>
+          </Headroom>
+        }
+
           <Main>{children}</Main>
        
-
-         {/* <Footer  color={color} as="footer" flexDirection="column" alignItems="flex-start" justifyContent= "flex-end">
-        <Wave orientation="bottom" />
-         <Box fontSize={0} px={[5, 6, 8, 10]}  my={2} ><a href="https://oliviergenevest.info" target="blank">crédits</a>
-              <Link to="/mentions-legales">Mentions légales</Link> - 2019</Box>
-       </Footer>
-          */}
+          {footer && <Footer/>}
+          
         </Wrapper>
       </>
     </ThemeProvider>
