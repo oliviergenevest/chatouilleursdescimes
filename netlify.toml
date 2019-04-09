@@ -1,3 +1,0 @@
-[context.deploy-preview.environment]
-command = "npm run build"
-publish = "public"

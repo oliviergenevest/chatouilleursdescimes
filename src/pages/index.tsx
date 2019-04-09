@@ -232,7 +232,7 @@ const logoAnimation = useSpring({
            </Box>
        </CtaButton>*/}
        <Illustration> 
-        <Ribbon text="#GrimpeArbre #nouveauté2019"/>
+        {/*<Ribbon text="#GrimpeArbre #nouveauté2019"/>*/}
          <Img 
             fluid={bgImage.childImageSharp.fluid}
             className="bgImage"
