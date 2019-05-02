@@ -19,5 +19,5 @@ module.exports = {
   themeColor: '#A3CD3B',
   backgroundColor: '#000',
   tel: '+33 (0)6 49 00 99 20',
-  email: 'contact@chatouilleurs-des-cimes.com',
+  email: 'info@chatouilleurs-des-cimes.com',
 }
