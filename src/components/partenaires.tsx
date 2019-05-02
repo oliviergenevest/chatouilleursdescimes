@@ -81,7 +81,7 @@ Partenaires.defaultProps = defaultProps
 export const query = graphql`
   query PartenairesQuery {
     
-    logosPartenaires: allFile(filter: { relativePath: { regex: "\/partenaires/" } }) {
+    logosPartenaires: allFile(filter: { relativePath: { regex: "\/partenaires/" }, extension: {regex: "/(jpg)|(jpeg)|(png)/"} }) {
       edges {
         node {
           name

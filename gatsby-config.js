@@ -58,7 +58,7 @@ module.exports = {
       },
     },
 
- /*  ONLY FOR PRODUCTION
+ /*  ONLY FOR PRODUCTION*/
     { 
       resolve: `gatsby-plugin-cookiehub-modif`,
       options: {
@@ -72,7 +72,7 @@ module.exports = {
         // enable ip anonymization
         anonymize: true,        
       },
-    },*/
+    },
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sitemap',

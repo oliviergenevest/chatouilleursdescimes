@@ -251,7 +251,7 @@ export const query = graphql`
         }
       }
     }
-    images: allFile(filter: { relativePath: { regex: $images }, extension: {eq:"jpg"} }) {
+    images: allFile(filter: { relativePath: { regex: $images }, extension: {regex: "/(jpg)|(jpeg)|(png)/"} }) {
       edges {
         node {
           name
