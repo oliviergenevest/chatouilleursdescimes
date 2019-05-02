@@ -10,12 +10,12 @@ const wrapper = promise =>
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
-  const projectTemplate = require.resolve('./src/templates/project.tsx')
+  const packTemplate = require.resolve('./src/templates/pack.tsx')
 
   const result = await wrapper(
     graphql(`
       {
-        projects: allProjectsYaml {
+        packs: allPacksYaml {
           edges {
             node {
               slug
@@ -27,10 +27,10 @@ exports.createPages = async ({ graphql, actions }) => {
     `)
   )
 
-  result.data.projects.edges.forEach(edge => {
+  result.data.packs.edges.forEach(edge => {
     createPage({
-      path: edge.node.slug,
-      component: projectTemplate,
+      path: `/packs${edge.node.slug}`,
+      component: packTemplate,
       context: {
         slug: edge.node.slug,
         images: `/${edge.node.images}/`,

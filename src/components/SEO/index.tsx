@@ -89,23 +89,23 @@ const SEO = ({ title, desc, banner, pathname, node, individual }: Props) => {
       '@type': 'ListItem',
       item: {
         '@id': siteUrl,
-        name: 'Homepage',
+        name: 'Accueil',
       },
       position: 1,
     },
     {
       '@type': 'ListItem',
       item: {
-        '@id': `${siteUrl}/about`,
-        name: 'About',
+        '@id': `${siteUrl}/contact`,
+        name: 'Contact',
       },
       position: 2,
     },
     {
       '@type': 'ListItem',
       item: {
-        '@id': `${siteUrl}/projects`,
-        name: 'About',
+        '@id': `${siteUrl}/packs`,
+        name: 'Nos formules',
       },
       position: 3,
     },
@@ -150,7 +150,7 @@ const SEO = ({ title, desc, banner, pathname, node, individual }: Props) => {
       dateModified: node ? node.modifiedTime : '2019-03-10T10:30:00+01:00',
       description: seo.description,
       headline: seo.title,
-      inLanguage: 'en',
+      inLanguage: 'fr',
       url: seo.url,
       name: seo.title,
       image: {
@@ -184,12 +184,11 @@ const SEO = ({ title, desc, banner, pathname, node, individual }: Props) => {
         <html lang={siteLanguage} />
         <meta name="description" content={seo.description} />
         <meta name="image" content={seo.image} />
-        <meta name="gatsby-starter" content="Gatsby Starter Portfolio Jodie" />
         {/* Insert schema.org data conditionally (webpage/article) + everytime (breadcrumbs) */}
         {!individual && <script type="application/ld+json">{JSON.stringify(schemaOrgWebPage)}</script>}
         {individual && <script type="application/ld+json">{JSON.stringify(schemaArticle)}</script>}
         <script type="application/ld+json">{JSON.stringify(breadcrumb)}</script>
-  
+        <script src="https://cdn.polyfill.io/v2/polyfill.min.js" />
       </Helmet>
       <Facebook
         desc={seo.description}

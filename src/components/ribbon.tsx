@@ -6,12 +6,18 @@ import Wave from '../elements/Wave'
 const Wrapper = styled.div`
   position: absolute;
   display:flex;
-  min-width:300px;
+  border:1px solid white;
   z-index: 5;
-  
+ /* margin:5rem;*/
+  padding:0 3rem;
   background-color:#494992;
- /* transform:rotate(90deg);*/
- p {padding:1rem; color:white;}
+//  transform:rotate(-45deg);
+  overflow: hidden ;
+ 
+  span {
+    padding:1rem 2rem; 
+    color:white;
+  }
  
   ${props => props.orientation === 'top-left' && 'top: 0;left:0;'};
   ${props => props.orientation === 'bottom-left' && 'bottom: 0;left:0;'};
@@ -24,8 +30,8 @@ const Ribbon = ({orientation, text}) => {
 
 	return(
 			<Wrapper orientation={orientation}>
-			   <p>{text}</p>
-        <Wave orientation="top" />
+			   <span>{text}</span>
+      
 			</Wrapper>
 		)
 }

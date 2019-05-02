@@ -85,4 +85,4 @@ export const AnimatedButton = styled<any>(animated.button)`
   ${color}
 `
 
-AnimatedFlex.displayName = 'AnimatedButton'
+Button.displayName = 'AnimatedButton'

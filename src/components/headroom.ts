@@ -26,6 +26,9 @@ const headroomCss = css`
         fill: ${theme.colors.white};
       }
     }
+    span {
+      margin-left: 1rem;
+    }
   }
   .headroom--unfixed {
     position: fixed;
@@ -68,9 +71,7 @@ const headroomCss = css`
         fill: ${theme.colors.black};
       }
     }
-    span {
-      color: ${theme.colors.black};
-    }
+    
   }
 `
 

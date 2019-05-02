@@ -10,7 +10,7 @@ import { ChildImageSharp } from '../types'
 
 type PageProps = {
   data: {
-    projects: {
+    packs: {
       edges: {
         node: {
           title: string
@@ -20,20 +20,21 @@ type PageProps = {
       }[]
     }
   }
-}
+};
 
 const Area = styled(animated.div)`
+  width:100%;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-auto-rows: 50vw;
-
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-rows: 25vw;
+grid-gap:1vw;
   @media (max-width: ${props => props.theme.breakpoints[2]}) {
     grid-template-columns: 1fr;
     grid-auto-rows: 60vw;
   }
 `
 
-const Projects: React.FunctionComponent<PageProps> = ({ data: { projects } }) => {
+const Packs: React.FunctionComponent<PageProps> = ({ data: { packs } }) => {
   const pageAnimation = useSpring({
     config: config.slow,
     from: { opacity: 0 },
@@ -42,12 +43,13 @@ const Projects: React.FunctionComponent<PageProps> = ({ data: { projects } }) =>
 
   return (
     <Layout color="#000">
-      <SEO title="Projects | Jodie" />
+      <SEO title="L'équipes des Chatouilleurs des Cimes vous propose 8 formules différentes sous forme de pack pour répondre à tous vos besoins en terme de grimpe d'arbre en solo ou en groupe." />
+      <p>toutes les installations sont éphémères. Il y a toujours une petite marche d’approche. Possibilité d’adaptation pour personnes à mobilité réduite:  chaque fois nous nous efforçons de partager notre univers en le rendant accessible à tous. </p>
       <Area style={pageAnimation}>
-        {projects.edges.map(({ node: project }) => (
-          <GridItem key={project.slug} to={project.slug}>
-            <Img fluid={project.cover.childImageSharp.fluid} />
-            <span>{project.title}</span>
+        {packs.edges.map(({ node: pack }) => (
+          <GridItem key={pack.slug} to={`/packs${pack.slug}`}>
+            <Img fluid={pack.cover.childImageSharp.fluid} />
+            <span>{pack.title}</span>
           </GridItem>
         ))}
       </Area>
@@ -55,11 +57,11 @@ const Projects: React.FunctionComponent<PageProps> = ({ data: { projects } }) =>
   )
 }
 
-export default Projects
+export default Packs
 
 export const query = graphql`
-  query ProjectsQuery {
-    projects: allProjectsYaml {
+  query PacksQuery {
+    packs: allPacksYaml {
       edges {
         node {
           title

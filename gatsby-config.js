@@ -6,7 +6,6 @@ module.exports = {
   pathPrefix: config.pathPrefix,
   siteMetadata: {
     siteUrl: config.siteUrl + pathPrefix,
-    pathPrefix,
     title: config.siteTitle,
     titleAlt: config.siteTitleAlt,
     description: config.siteDescription,
@@ -26,8 +25,15 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'projects',
-        path: `${__dirname}/content/projects`,
+        name: 'packs',
+        path: `${__dirname}/content/packs`,
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'partenaires',
+        path: `${__dirname}/content/partenaires`,
       },
     },
     {
@@ -44,12 +50,29 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    {
-      resolve: 'gatsby-plugin-google-analytics',
+     {
+      resolve: 'gatsby-source-filesystem',
       options: {
-        trackingId: config.googleAnalyticsID,
+        name: 'pdf',
+        path: `${__dirname}/src/pdf`,
       },
     },
+
+ /*  ONLY FOR PRODUCTION
+    { 
+      resolve: `gatsby-plugin-cookiehub-modif`,
+      options: {
+        // your cookiehub widget ID
+        cookihubId: "c9710f92",
+        // your google analytics tracking id
+        trackingId: config.googleAnalyticsID,
+        gtagId: config.googleAnalyticsID,
+        // Puts tracking script in the head instead of the body
+        head: false,
+        // enable ip anonymization
+        anonymize: true,        
+      },
+    },*/
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sitemap',

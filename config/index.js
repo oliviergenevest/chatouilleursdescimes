@@ -9,7 +9,7 @@ module.exports = {
   siteLanguage: 'fr', // Language Tag on <html> element
   siteLogo: '/logos/logo.png', // Used for SEO and manifest
   siteDescription: 'Vivez une expérience insolite au cœur des arbres sur des sites exceptionnels à travers un panel d’activités sportives, ludiques et sensationnelles accessibles à tous.',
-  author: 'olivier.genevest', // Author for schema.org JSONLD
+  author: 'Chatouilleurs des cimes', // Author for schema.org JSONLD
   facebookPageID: 'chatouilleursdescimes',
   userTwitter: '@Chatouilleursdescimes', // Twitter Username
   ogSiteName: 'Chatouilleurs des cimes', // Facebook Site Name
@@ -18,4 +18,6 @@ module.exports = {
   // Manifest and Progress color
   themeColor: '#A3CD3B',
   backgroundColor: '#000',
+  tel: '+33 (0)6 49 00 99 20',
+  email: 'contact@chatouilleurs-des-cimes.com',
 }

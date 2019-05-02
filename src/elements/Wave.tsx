@@ -6,7 +6,7 @@ import theme from '../../config/theme.ts'
 const Wrapper = styled.div`
   position: absolute;
   width: 100%;
-  z-index: -1;
+ 
   ${props => props.orientation === 'top' && 'top: 0'};
   ${props => props.orientation === 'top' && 'transform: matrix(1, 0, 0, -1, 0, 0)'};
   ${props => props.orientation === 'bottom' && 'bottom: 0'};
@@ -38,7 +38,7 @@ const smoooooth = keyframes`
 `
 const WaveSVG = styled.svg`
   path {
-    fill: ${theme.colors.black};
+   /* fill: ${theme.colors.secondary};*/
     width: 100%;
     animation: ${smoooooth} 25s linear infinite alternate;
   }

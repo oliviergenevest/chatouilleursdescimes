@@ -58,7 +58,7 @@ const SubHeader = ({ color }: LayoutProps) => {
                py={2}
                px={4}
                 justifyContent="space-between" 
-                style={{'backgroundColor':theme.colors.primary,'fontSize':'14px'}}>
+                style={{'backgroundColor':theme.colors.secondary,'fontSize':'14px','color':'white'}}>
               	<Left>
                		Saint-Julien-de-Peyrolas (Gard)
                </Left>
@@ -66,7 +66,7 @@ const SubHeader = ({ color }: LayoutProps) => {
               	 	<Flex>
               	 		 <a href={'https://www.facebook.com/'+`${siteConfig.facebookPageID}`} target="blank" title="facebook">
               	 			<FaFacebook size={20} />
-              	 		</a> <span>06 49 00 99 20</span>
+              	 		</a> <span>{siteConfig.tel}</span>
               	 	</Flex>
                </Right>
             </Flex>
