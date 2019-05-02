@@ -5,7 +5,7 @@ import Img from 'gatsby-image'
 import { readableColor } from 'polished'
 import { Box, Flex, Button } from '../elements'
 import theme from '../../config/theme'
-import Wave from '../elements/wave'
+import Wave from '../elements/wave.tsx'
 import siteConfig from '../../config'
 
 const Left = styled(Box)`
