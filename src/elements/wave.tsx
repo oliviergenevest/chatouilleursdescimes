@@ -39,11 +39,12 @@ const smoooooth = keyframes`
 const WaveSVG = styled.svg`
   path {
    /* fill: ${theme.colors.secondary};*/
+    fill: ${props => props.fill};
     width: 100%;
     animation: ${smoooooth} 25s linear infinite alternate;
   }
 `
-const Wave = ({ orientation }) => (
+const Wave = ({ orientation, fill }) => (
   <Wrapper orientation={orientation}>
     <InnerWave>
       <WaveSVG
@@ -53,6 +54,7 @@ const Wave = ({ orientation }) => (
         preserveAspectRatio="none"
         aria-hidden="true"
         focusable="false"
+        fill={fill}
       >
         <path>
           <animate
@@ -69,7 +71,9 @@ const Wave = ({ orientation }) => (
 export default Wave
 Wave.propTypes = {
   orientation: PropTypes.oneOf(['top', 'bottom']),
+  fill:PropTypes.string,
 }
 Wave.defaultProps = {
   orientation: 'bottom',
+  fill:'black',
 }

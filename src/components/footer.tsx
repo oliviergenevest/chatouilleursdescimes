@@ -62,7 +62,12 @@ const Footer = ({ color }: LayoutProps) => {
               justifyContent= "flex-end"
             >
             <Wave orientation="top"/>
-          <WrapNavigation  px={[5, 6, 8, 10]}  py={[5, 6, 8, 10]} justifyContent="space-between" >
+          <WrapNavigation  
+            px={[5, 6, 8, 10]}  
+            pt={[4, 6, 8, 10]}
+            pb={[10, 10, 10, 10]} 
+            justifyContent="space-between"
+             >
             <Navigation fontSize={1}  my={4} flexDirection="column"  alignItems="flex-start" 
            >
               <Link to="/packs">Nos formules</Link>
@@ -91,11 +96,12 @@ const Footer = ({ color }: LayoutProps) => {
                  <Img fixed={data.logoWhite.childImageSharp.fixed}/>
             </div>
             
-           </WrapNavigation><Wave orientation="bottom"/>
-            <Box px={[5, 6, 8, 10]} fontSize={1}  my={3} >(c) Tous droits réservés - Chatouilleurs des Cimes - 2019 - <a href="https://oliviergenevest.info" target="blank">crédits</a>
-            </Box>
+           </WrapNavigation>
+           <Wave orientation="bottom" fill="white"/>
+          
             </Wrapper>
-
+  <Box px={[5, 6, 8, 10]} fontSize={1}  my={3} pb={3} >(c) Tous droits réservés - Chatouilleurs des cimes - 2019 - <a href="https://oliviergenevest.info" target="blank">crédits</a>
+            </Box>
             </>
           
   )

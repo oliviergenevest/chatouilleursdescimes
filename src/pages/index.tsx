@@ -207,15 +207,15 @@ const AreaTeaser = styled(animated.section)`
 const Teaser = styled(animated.h2)`
 width:66%;
 max-width:60rem;
- text-align:center;
-   font-size:3rem;
-   font-family:"acme"; 
-   color:${props => props.theme.colors.white};
-  @media (max-width: ${props => props.theme.breakpoints[2]}) {
+text-align:center;
+font-size:3rem;
+font-family:"acme"; 
+color:${props => props.theme.colors.white};
+@media (max-width: ${props => props.theme.breakpoints[2]}) {
    font-size:2rem;
   
    width:100%;
-  }
+}
 `
 const ImgTeaserElephant = styled(Img)`
 width:33%;
@@ -323,13 +323,13 @@ const Index: React.FunctionComponent<PageProps> = ({ data: { bgImage, teaserImag
        </CtaButton>*/}
         <Illustration> 
         {/* <Ribbon text="Nouveauté 2019" orientation="bottom-right"/>*/}
-           <Slideshow />
-          {/*  <Img 
+         {/*   <Slideshow />*/}
+           <Img 
               fluid={bgImage.childImageSharp.fluid}
               className="bgImage"
               backgroundColor="black"
             />
-            <div className="bgDots"></div>*/}
+            <div className="bgDots"></div>
         </Illustration> 
 
       </Area>
@@ -349,7 +349,7 @@ const Index: React.FunctionComponent<PageProps> = ({ data: { bgImage, teaserImag
           
             backgroundColor="black"
           />
-           <Teaser>Découvrez un univers hors du temps qui éveillera vos sens par des jeux, des rires, des émotions au sein d'une nature enchantée. Venez rencontrer les chatouilleurs des cimes !</Teaser>
+           <Teaser>Découvrez un univers hors du temps qui éveillera vos sens par des jeux, des rires, des émotions au sein d'une nature enchantée. Venez rencontrer les Chatouilleurs des cimes !</Teaser>
           
         </Content> 
         <Img 

@@ -8,7 +8,7 @@ module.exports = {
   siteUrl: 'https://www.chatouilleurs-des-cimes.com', // Domain of your site. No trailing slash!
   siteLanguage: 'fr', // Language Tag on <html> element
   siteLogo: '/logos/logo.png', // Used for SEO and manifest
-  siteDescription: 'Vivez une expérience insolite au cœur des arbres sur des sites exceptionnels à travers un panel d’activités sportives, ludiques et sensationnelles accessibles à tous.',
+  siteDescription: 'Vivez une expérience insolite au cœur des arbres sur des sites exceptionnels à travers un panel d’activités sportives, ludiques et sensationnelles accessibles à tous. Découvrez la grimpe d\'arbre, aux portes des Gorges de l\'Ardèche.',
   author: 'Chatouilleurs des cimes', // Author for schema.org JSONLD
   facebookPageID: 'chatouilleursdescimes',
   userTwitter: '@Chatouilleursdescimes', // Twitter Username

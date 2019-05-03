@@ -1,6 +1,11 @@
+const dotenv = require("dotenv");
 const config = require('./config')
-
 const pathPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix
+if (process.env.ENVIRONMENT !== "production") {
+  dotenv.config();
+}
+
+const { GOOGLE_MAPS_GEOCODING_API_KEY } = process.env;
  
 module.exports = { 
   pathPrefix: config.pathPrefix,
@@ -57,8 +62,15 @@ module.exports = {
         path: `${__dirname}/src/pdf`,
       },
     },
+   /* {
+      resolve: 'gatsby-source-googlemaps-geocoding',
+      options: {
+        key: process.env.GOOGLE_MAPS_GEOCODING_API_KEY,
+        address: `281, Chemin de Lafèbre, 30760 St-Julien de Peyrolas, France`,
+      }
+    },*/
 
- /*  ONLY FOR PRODUCTION*/
+ /*  ONLY FOR PRODUCTION
     { 
       resolve: `gatsby-plugin-cookiehub-modif`,
       options: {
@@ -72,7 +84,7 @@ module.exports = {
         // enable ip anonymization
         anonymize: true,        
       },
-    },
+    },*/
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sitemap',

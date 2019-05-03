@@ -6,6 +6,7 @@ import { config, animated, useSpring } from 'react-spring'
 import Layout from '../components/layout'
 import GridItem from '../components/grid-item'
 import SEO from '../components/SEO'
+import { Box, Flex, AnimatedBox, Button, AnimatedButton } from '../elements'
 import { ChildImageSharp } from '../types'
 
 type PageProps = {
@@ -44,7 +45,14 @@ const Packs: React.FunctionComponent<PageProps> = ({ data: { packs } }) => {
   return (
     <Layout color="#000">
       <SEO title="L'équipes des Chatouilleurs des Cimes vous propose 8 formules différentes sous forme de pack pour répondre à tous vos besoins en terme de grimpe d'arbre en solo ou en groupe." />
-      <p>toutes les installations sont éphémères. Il y a toujours une petite marche d’approche. Possibilité d’adaptation pour personnes à mobilité réduite:  chaque fois nous nous efforçons de partager notre univers en le rendant accessible à tous. </p>
+      <Flex flexDirection={['column', 'column', 'row', 'row']}>
+      <Box py={10} px={[6, 6, 8, 10]}>
+        <p>L'équipes des Chatouilleurs des Cimes vous propose 8 formules différentes sous forme de pack pour répondre à tous vos besoins en terme de grimpe d'arbre en solo ou en groupe.</p>
+      </Box>
+      <Box py={10} px={[6, 6, 8, 10]}>
+      <p>Possibilité d’adaptation pour personnes à mobilité réduite:  chaque fois nous nous efforçons de partager notre univers en le rendant accessible à tous. </p>
+       </Box>
+       </Flex>
       <Area style={pageAnimation}>
         {packs.edges.map(({ node: pack }) => (
           <GridItem key={pack.slug} to={`/packs${pack.slug}`}>

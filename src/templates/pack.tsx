@@ -25,7 +25,7 @@ const PackDescription = styled.div`
 
 const Side = styled(animated.div)`
   background-color:#a4ce3b40;
-  margin: 0 auto;
+  /*margin: 0 auto;*/
   grid-column: 2;
   grid-row: 1;
    @media (max-width: ${props => props.theme.breakpoints[2]}) {
