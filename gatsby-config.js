@@ -1,9 +1,9 @@
-const dotenv = require("dotenv");
+/*const dotenv = require("dotenv");*/
 const config = require('./config')
 const pathPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix
-if (process.env.ENVIRONMENT !== "production") {
+/*if (process.env.ENVIRONMENT !== "production") {
   dotenv.config();
-}
+}*/
 
 const { GOOGLE_MAPS_GEOCODING_API_KEY } = process.env;
  
