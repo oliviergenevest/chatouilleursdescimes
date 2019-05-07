@@ -3,7 +3,7 @@ import styled, { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { graphql, Link, useStaticQuery } from 'gatsby'
 import { readableColor } from 'polished'
 import { Box, Flex, Button } from '../elements'
-import { FaFacebook } from 'react-icons/fa';
+import { FaMobile } from 'react-icons/fa';
 import theme from '../../config/theme'
 import siteConfig from '../../config'
 
@@ -65,8 +65,8 @@ const SubHeader = ({ color }: LayoutProps) => {
                <Right>
               	 	<Flex>
               	 		 <a href={'https://www.facebook.com/'+`${siteConfig.facebookPageID}`} target="blank" title="facebook">
-              	 			<FaFacebook size={20} />
-              	 		</a> <span>{siteConfig.tel}</span>
+              	 			
+              	 		</a> <span><FaMobile  /> {siteConfig.tel}</span>
               	 	</Flex>
                </Right>
             </Flex>

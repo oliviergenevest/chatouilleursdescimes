@@ -2,14 +2,17 @@
   title_detail: "Pack Sensibl’arbre"
   slug: "/pack-sensibl-arbre"
   category: "Grimpe d'arbres | Découverte"
+  online_booking: 1
   color: "black"
   images: "sensiblarbre"
   cover: "./sensiblarbre/sensiblarbre.jpg"
   desc: "Un moment à votre rythme, accompagné par des passionnés des arbres, pour découvrir le fonctionnement de ces géants et leur porter un regard nouveau.
 "
 
+
 - title: "Pack Sensation"
   title_detail: "Pack Sensation"
+  online_booking: 1
   slug: "/pack-sensation"
   category: "Grimpe d'arbres | Frisson | Sensation"
   color: "#494992"
@@ -17,8 +20,10 @@
   cover: "./sensation/sensation.jpg"
   desc: "Un frisson entre deux arbres le temps de découvrir la verticalité sur un support vivant. Du saut pendulaire au tyrolienne catapulte; une installation adaptable à chaque site vous permettra de vivre une expérience unique."
 
+
 - title: "Pack Degust’arbre"
   title_detail: "Pack Degust’arbre"
+  online_booking: 0
   slug: "/pack-degust-arbre"
   category: "Grimpe d'arbres | Repas perché | Dégustation | Produits locaux"
   color: "#494992"
@@ -30,6 +35,7 @@ Une soirée pour profiter d’un coucher de soleil en hauteur avec une dégustat
 
 - title: "Pack Decon’arbre"
   title_detail: "Pack Decon’arbre"
+  online_booking: 0
   slug: "/pack-decon-arbre"
   category: "Grimpe d'arbres | Evènement spécial | Fête exceptionnelle"
   color: "#90BDDF"
@@ -39,6 +45,7 @@ Une soirée pour profiter d’un coucher de soleil en hauteur avec une dégustat
 
 - title: "Pack Arbr’autonomie"
   title_detail: "Pack Arbr’autonomie"
+  online_booking: 0
   slug: "/pack-arbre-autonomie"
   category: "Grimpe d'arbres | Autonomie | Apprentissage"
   color: "#90BDDF"
@@ -48,6 +55,7 @@ Une soirée pour profiter d’un coucher de soleil en hauteur avec une dégustat
 
 - title: "Pack Arbr’école"
   title_detail: "Pack Arbr’école"
+  online_booking: 0
   slug: "/pack-arbre-ecole"
   category: "Grimpe d'arbre | groupes scolaires | pédagogique | sur devis"
   color: "white"
@@ -58,6 +66,7 @@ Une soirée pour profiter d’un coucher de soleil en hauteur avec une dégustat
 - title: "Pack Nuitée dans les cimes"
   title_detail: "Pack Nuitée dans les cimes"
   slug: "/pack-nuitee-dans-les-cimes"
+  online_booking: 0
   category: "Grimpe d'arbres | Nuit perchée"
   color: "#90BDDF"
   images: "nuit"
@@ -66,6 +75,7 @@ Une soirée pour profiter d’un coucher de soleil en hauteur avec une dégustat
 
 - title: "L’arbre pour tous"
   title_detail: "L’arbre pour tous"
+  online_booking: 0
   slug: "/l-arbre-pour-tous"
   category: "Grimpe d'arbres | Accessibilité"
   color: "#90BDDF"

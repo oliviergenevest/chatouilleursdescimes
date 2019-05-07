@@ -98,7 +98,7 @@ const GlobalStyles = createGlobalStyle`
       }
   }
 
-/*  a {
+  a {
     transition: all 0.3s ease-in-out;
     color:inherit;
     text-decoration:none;
@@ -107,31 +107,8 @@ const GlobalStyles = createGlobalStyle`
       color: ${theme.colors.secondary};
       text-decoration: underline ;
     }
-  }*/
-  a {
-  display: inline-block;
-  position: relative;
-  color: inherit;
-   text-decoration: none ;
-}
-a::after {
-  content: '';
-  position: absolute;
-  width: 50%;
-  transform: scaleX(0);
-  height: 1px;
-  bottom: -2px;
-  left: 0;
+  }
 
-  background-color: ${theme.colors.secondary};
-  transform-origin: bottom right;
-  transition: transform 0.25s ease-out;
-}
-a:hover::after {
-  transform: scaleX(1);
-  transform-origin: bottom left;
- 
-}
 ul {
   list-style-type:none;
  /* margin: 0;*/
@@ -178,35 +155,50 @@ const Header = styled(Box)<{ bg: string }>`
 `
 
 const NavTop = styled(Flex)<{ color: string }>`
-  a {
+  
+  @media (max-width: ${props => props.theme.breakpoints[2]}) {
+      display:none;
+    }
+
+  a.navlink {
     text-transform:uppercase;
     text-decoration: none;
-    color: ${props => readableColor(`${props.color}`)};
+    color: white;
     font-size: ${props => props.theme.fontSizes[1]};
     line-height: 1.5;
-     margin-left: ${props => props.theme.space[4]};
+    margin-left: ${props => props.theme.space[4]};
     &:hover,
     &:focus,
     &.navlink-active {
       color: ${props => props.theme.colors.primary};
     }
-
-    @media (max-width: ${props => props.theme.breakpoints[2]}) {
-      font-size: ${props => props.theme.fontSizes[1]};
-      margin-left: ${props => props.theme.space[4]};
-      display:none;
-    }
-/*
-    @media (max-width: ${props => props.theme.breakpoints[1]}) {
-      font-size: ${props => props.theme.fontSizes[1]};
-      margin-left: ${props => props.theme.space[3]};
-    }
-
-    @media (max-width: ${props => props.theme.breakpoints[0]}) {
-      font-size: ${props => props.theme.fontSizes[0]};
-      margin-left: ${props => props.theme.space[2]};
-    }*/
   }
+   
+  .navlink {
+    display: inline-block;
+    position: relative;
+    color: inherit;
+     text-decoration: none ;
+  }
+  .navlink::after {
+    content: '';
+    position: absolute;
+    width: 50%;
+    transform: scaleX(0);
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+
+    background-color: ${theme.colors.secondary};
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+   .navlink:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+   
+  }
+  
 `
 
 
@@ -277,6 +269,17 @@ height:100%;
 padding-top:168px;
 box-sizing:border-box;
 
+  nav {
+    display:flex;
+    flex-direction:column;
+    align-content:center;
+    justify-content:center;
+    a {
+      font-size:26px;
+      text-transform:uppercase;
+      margin:1rem;
+    }
+  }
 `
 
 
@@ -329,12 +332,13 @@ const Layout = ({ children, color, header, footer }: LayoutProps) => {
                     pb={[6]}
                     >
                
-               
-                  {data.navigation.edges.map(({ node: item }) => (
-                  <PartialNavLink to={item.link} key={item.name} >
-                    {item.name}
-                  </PartialNavLink>
-                  ))}
+                  <nav>
+                    {data.navigation.edges.map(({ node: item }) => (
+                    <PartialNavLink to={item.link} key={item.name} >
+                      {item.name}
+                    </PartialNavLink>
+                    ))}
+                  </nav>
                 </ContentMobile>    
               </MenuMobile>
              </ScrollLock>

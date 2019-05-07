@@ -38,15 +38,17 @@ const PageInfosPratiques = () => {
         
         <h2>Tarifs</h2>
         <Table>
-          <tr><th></th> <th>Adultes (+14 ans)</th> <th>Enfants (7/13 ans)</th> </tr>
+        <tbody>
+          <tr><th></th><th>Adultes (+14 ans)</th><th>Enfants (7/13 ans)</th></tr> 
           <tr><th>Pack sensibl'arbre</th><td>30€</td><td>20 €</td></tr>
           <tr><th>Pack sensation</th><td>35€</td><td>25€</td></tr>
-          <tr><th>Pack Decon’arbre</th><td colspan="2">Sur devis</td></tr>
-          <tr><th>Pack Arbr’autonomie</th><td colspan="2">Sur devis</td></tr>
-          <tr><th>Pack Arbr’école</th><td colspan="2">Sur devis</td></tr>
-          <tr><th>Pack Nuitée dans les cimes</th><td colspan="2">Sur devis</td></tr>
-          <tr><th>Pack L’arbre pour tous</th><td colspan="2">Sur devis</td></tr>
+          <tr><th>Pack Decon’arbre</th><td colSpan="2">Sur devis</td></tr> 
+          <tr><th>Pack Arbr’autonomie</th><td colSpan="2">Sur devis</td></tr> 
+          <tr><th>Pack Arbr’école</th><td colSpan="2">Sur devis</td></tr>
+          <tr><th>Pack Nuitée dans les cimes</th><td colSpan="2">Sur devis</td></tr> 
+          <tr><th>Pack L’arbre pour tous</th><td colSpan="2">Sur devis</td></tr> 
           <tr><th>Pack Soirée</th><td>55€</td><td>-</td></tr>
+        </tbody>
         </Table>
         <h2>Horaires</h2>
         <p>Nous sommes ouverts toute l'année. Contactez-nous pour l'organisation d'un évenement spécial.</p>
@@ -76,7 +78,7 @@ export const query = graphql`
     
     bgImage: file(sourceInstanceName: { eq: "images" }, name: { eq: "5" }) {
       childImageSharp {
-        fluid(quality: 95, maxHeight: 1200) {
+        fluid(quality: 95, maxWidth: 2000) {
           ...GatsbyImageSharpFluid_tracedSVG
         }
       }

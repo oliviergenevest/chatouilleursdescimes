@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
 import { transparentize, readableColor } from 'polished'
 import styled from 'styled-components'
@@ -73,17 +73,27 @@ const Description = styled(animated.div)`
   line-height: 1.58;
 `
 
-const PButton = styled(Button)<{ color: string }>`
+const PButton = styled(Link)<{ color: string }>`
   background: ${props => (props.color === 'white' ? 'black' : props.color)};
   color: ${props => readableColor(props.color === 'white' ? 'black' : props.color)};
   transition: ease 0.3s;
+  border-radius: 1000rem;
+  border: none;
+  cursor:pointer;
+  display:block;
+  font-size: 1.25rem;
+  padding:1.25rem;
    &:hover {
-    box-shadow: 0 5px 5px #c6ceb157 ;
+    box-shadow: 0 5px 5px #1d1d1d57 ;
     transform: translateY(-5px);
+    color:white;
+    text-decoration:none;
   }
   &:focus {
+      color:white;
+    text-decoration:none;
     outline: none;
-    box-shadow:  0 3px 3px #c6ceb157;
+    box-shadow:  0 3px 3px #1d1d1d57;
   }
 `
 
@@ -110,6 +120,7 @@ type PageProps = {
   data: {
     pack: {
       title_detail: string
+      online_booking: boolean
       color: string
       category: string
       desc: string
@@ -202,14 +213,15 @@ const Pack: React.FunctionComponent<PageProps> = ({ data: { pack, images } }) =>
 
         <Side style={sideBarAnimation}>
           <PBoxSide  py={10} px={[6, 6, 8, 10]}   >
-         
-           <PButton color={theme.colors.secondary} py={4} px={8}>
-           Billeterie
+         { pack.online_booking ? 
+           <PButton color={theme.colors.secondary} py={4} px={8} to="./reservation">
+           Réservez en ligne dès maintenant !
           </PButton>
-
-          <PButton color={theme.colors.secondary} py={4} px={8}>
+            :
+          <PButton color={theme.colors.secondary} py={4} px={8} to="./contact">
            Ce pack est sur devis. Contactez-nous pour plus d'information.
           </PButton>
+          }
            <List>
 
             <ListItem><FaPagelines size={50} /><span>Toutes les installations sont éphémères.</span></ListItem>
@@ -235,6 +247,7 @@ export const query = graphql`
       title_detail
       color
       category
+      online_booking
       desc
       slug
       parent {

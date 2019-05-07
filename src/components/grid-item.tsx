@@ -4,7 +4,7 @@ import { Link } from 'gatsby'
 const GridItem = styled(Link)`
   position: relative;
   > div {
-        border-radius: 5%;
+        border-radius: .5em;
     position: absolute !important;
     top: 0;
     right: 0;

@@ -4,6 +4,7 @@ import { AnimatedBox } from '../elements'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import theme from '../../config/theme.ts'
+import Wave from '../elements/wave'
 
 const Wrapper = styled.div`
 	padding:0;
@@ -39,10 +40,11 @@ const PAnimatedBox = styled(AnimatedBox)`
   width: 100%;
   h1 {
   position: absolute;
-    color: black;
+    color: white;
     bottom: 0;
+    top:0;
     padding: 1rem;
-    background-color: #ffffff;
+    /*background-color: #ffffff;*/
     border-radius: 20% 20% 0 0;
 }
 `
@@ -70,6 +72,7 @@ const HeaderImage = ({
            		
         	 
          	</PAnimatedBox>
+          <Wave orientation="bottom" fill="white"/>
          </Wrapper>
       )    
  }
