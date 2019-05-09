@@ -34,18 +34,17 @@ const ImgBackground = styled(Img)`
 `;
 
 const PAnimatedBox = styled(AnimatedBox)`
-  position: absolute;
-  bottom: 0;
+  position:absolute;
+  top:0;
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
   height: 100%;
   width: 100%;
   h1 {
-  position: absolute;
+    text-align:center;
     color: white;
-    bottom: 0;
-    top:0;
     padding: 1rem;
-    /*background-color: #ffffff;*/
-    border-radius: 20% 20% 0 0;
 }
 `
 
@@ -87,9 +86,9 @@ HeaderImage.propTypes = {
   className: PropTypes.string
 };
 HeaderImage.defaultProps = {
-  height: null,
-  mobileHeight: "250px",
-  overlayColor: "transparent",
+  height: "50vh",
+  mobileHeight: "60vh",
+  overlayColor: "#00000087",
   children: null,
   className: null
 };

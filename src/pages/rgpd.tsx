@@ -34,19 +34,7 @@ const pageRGPD = () => {
     <Layout>
       <SEO title="RGPD" desc={ `${siteConfig.siteTitle}` | `${siteConfig.siteHeadline}`} />
       <AnimatedBox style={pageAnimation} py={[6, 6, 6, 8]} px={[6, 6, 8, 6, 8, 13]}>
-        <h1> <svg
-  width="100"
-  height="100"
-  viewBox="0 0 600 600"
-  xmlns="http://www.w3.org/2000/svg"
-
-
->
-  <g transform="translate(300,300)">
-    <path d="M90.4,-146.5C120.3,-121.5,149.7,-101.7,169.7,-73.1C189.7,-44.5,200.3,-7.1,195.6,28.4C190.9,63.9,171,97.4,145,123.2C118.9,149,86.6,167.1,53.8,171.2C21,175.3,-12.3,165.4,-55.6,164.2C-98.9,163,-152.3,170.6,-188.2,150.9C-224.1,131.3,-242.7,84.4,-249.7,35.9C-256.7,-12.6,-252.1,-62.8,-229.1,-101.2C-206.2,-139.5,-165,-166.1,-123.8,-185.9C-82.5,-205.8,-41.3,-218.9,-5.5,-210.3C30.3,-201.8,60.6,-171.6,90.4,-146.5Z" fill="#a4ce3b" />
-  </g>
-</svg>
-RGPD - Protection des données</h1>
+        <h1>RGPD - Protection des données</h1>
        
         <h2>Données personnelles collectées</h2>
         <p>Chatouilleurs des Cimes collecte des données relatives aux acheteurs de billets (nom, prénom, email, télephone). 

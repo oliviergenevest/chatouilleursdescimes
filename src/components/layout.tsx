@@ -363,7 +363,7 @@ const Layout = ({ children, color, header, footer }: LayoutProps) => {
                   </PartialNavLink>
                   ))} 
                   </NavTop>
-                  <HamburgerSpring isActive={mobileNavOpen} toggleButton={() => {setMobileNavOpen(!mobileNavOpen)}} buttonStyle={{ outline: "none" }} barColor="white" />
+                  <HamburgerSpring isActive={mobileNavOpen} toggleButton={() => {setMobileNavOpen(!mobileNavOpen)}} buttonStyle={{ outline: "none" }} barColor="white" aria-label="Navigation"/>
                   
                 {/*
                   <AnimatedBox py={[2, 2, 3, 3]}  >

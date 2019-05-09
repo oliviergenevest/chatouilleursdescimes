@@ -33,7 +33,7 @@ const PageInfosPratiques = () => {
   return (
     <Layout>
       <SEO title={"Infos pratiques" | `${config.siteTitleAlt}`} desc="Informations pratiques" />
-      <HeaderImage fluid={data.bgImage.childImageSharp.fluid} title="Infos Pratiques" height='350px'><h1>Infos pratiques</h1></HeaderImage>
+      <HeaderImage fluid={data.bgImage.childImageSharp.fluid} title="Infos Pratiques" ><h1>Infos pratiques</h1></HeaderImage>
       <AnimatedBox style={pageAnimation} py={[6, 6, 6, 8]} px={[6, 6, 8, 6, 8, 13]}>
         
         <h2>Tarifs</h2>

@@ -19,7 +19,7 @@ const Réservation = () => {
   return (
     <Layout>
       <SEO title={"Billetterie" | `${config.siteTitleAlt}`} desc="Acheter vos billets en ligne, paiement par CB entièrement sécurisé" />
-      <HeaderImage fluid={data.bgImage.childImageSharp.fluid} title="Infos Pratiques" height='350px'><h1>Réservation</h1></HeaderImage>
+      <HeaderImage fluid={data.bgImage.childImageSharp.fluid} title="Infos Pratiques"><h1>Réservation</h1></HeaderImage>
       <AnimatedBox style={pageAnimation} py={[6, 6, 6, 8]} px={[6, 6, 8, 6, 8, 13]}>
        
        <p>Bienvenue dans notre billetterie en ligne avec paiement sécurisé par carte bancaire.

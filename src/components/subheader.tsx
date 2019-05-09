@@ -3,7 +3,7 @@ import styled, { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { graphql, Link, useStaticQuery } from 'gatsby'
 import { readableColor } from 'polished'
 import { Box, Flex, Button } from '../elements'
-import { FaMobile } from 'react-icons/fa';
+import { FaMobileAlt } from 'react-icons/fa';
 import theme from '../../config/theme'
 import siteConfig from '../../config'
 
@@ -12,6 +12,7 @@ const Left = styled(Box)`
   	padding-right: 1rem;
   	@media (max-width: ${props => props.theme.breakpoints[1]}) {
    		padding-right: 0;
+      display:none;
  	 }
 `
 
@@ -20,9 +21,16 @@ const Right = styled(Box)`
   	padding-left: 1rem;
   	@media (max-width: ${props => props.theme.breakpoints[1]}) {
    		padding-left: 0;
+      width:100%;
  	 }
 `
 
+const Phone = styled.span `
+position:relative;
+svg {
+  position:absolute;
+  left:-1.2rem;
+}`
 
 const PButton = styled(Button)<{ color: string }>`
   background: ${props => (props.color === 'white' ? 'black' : props.color)};
@@ -63,11 +71,11 @@ const SubHeader = ({ color }: LayoutProps) => {
                		Saint-Julien-de-Peyrolas (Gard)
                </Left>
                <Right>
-              	 	<Flex>
+              	 	
               	 		 <a href={'https://www.facebook.com/'+`${siteConfig.facebookPageID}`} target="blank" title="facebook">
               	 			
-              	 		</a> <span><FaMobile  /> {siteConfig.tel}</span>
-              	 	</Flex>
+              	 		</a> <Phone><FaMobileAlt/> {siteConfig.tel}</Phone>
+              	 	
                </Right>
             </Flex>
   )

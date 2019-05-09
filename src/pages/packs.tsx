@@ -67,7 +67,7 @@ const Packs: React.FunctionComponent<PageProps> = ({ data: { packs, bgImage } })
   return (
     <Layout color="#000">
       <SEO title="L'équipes des Chatouilleurs des Cimes vous propose 8 formules différentes sous forme de pack pour répondre à tous vos besoins en terme de grimpe d'arbre en solo ou en groupe." />
-         <HeaderImage fluid={bgImage.childImageSharp.fluid} title="Infos Pratiques" height='350px'><h1>Nos formules</h1></HeaderImage>
+         <HeaderImage fluid={bgImage.childImageSharp.fluid} title="Infos Pratiques" ><h1>Nos formules</h1></HeaderImage>
       <Intro flexDirection={['column', 'column', 'row', 'row']} px={[6, 6, 8, 10]} py={6}>
         
         <IntroBox px={10} py={10}>
@@ -115,7 +115,7 @@ export const query = graphql`
         }
       }
     }
-    bgImage: file(sourceInstanceName: { eq: "images" }, name: { eq: "5" }) {
+    bgImage: file(sourceInstanceName: { eq: "images" }, name: { eq: "23" }) {
       childImageSharp {
         fluid(quality: 95, maxWidth: 2000) {
           ...GatsbyImageSharpFluid_tracedSVG
