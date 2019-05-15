@@ -56,8 +56,7 @@ module.exports = {
         params: {
           fields: 'hours, posts { id,from,name,message,created_time,story,description,link,picture,object_id }', // See Facebooks API to see what you can query for
         },
-        key: FACEBOOK_GRAPH_TOKEN, // You will need to create a Facebook application and go through review in order to get an API token.
-        //key: '2009365739351414|66f59b6a0eea9232870bc90e061faca8', // You will need to create a Facebook application and go through review in order to get an API token.
+        key: FACEBOOK_GRAPH_TOKEN, 
       },
     },
     {
@@ -74,15 +73,9 @@ module.exports = {
         path: `${__dirname}/src/pdf`,
       },
     },
-   /* {
-      resolve: 'gatsby-source-googlemaps-geocoding',
-      options: {
-        key: process.env.GOOGLE_MAPS_GEOCODING_API_KEY,
-        address: `281, Chemin de Lafèbre, 30760 St-Julien de Peyrolas, France`,
-      }
-    },*/
+  
 
- /*  ONLY FOR PRODUCTION
+ /*  ONLY FOR PRODUCTION*/
     { 
       resolve: `gatsby-plugin-cookiehub-modif`,
       options: {
@@ -96,7 +89,7 @@ module.exports = {
         // enable ip anonymization
         anonymize: true,        
       },
-    },*/
+    },
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sitemap',
