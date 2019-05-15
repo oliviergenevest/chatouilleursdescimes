@@ -49,6 +49,17 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-facebook`,
+      options: {
+        places: [`chatouilleursdescimes`], // Can be either a numeric ID or the URL ID
+        params: {
+          fields: 'hours, posts { id,from,name,message,created_time,story,description,link,picture,object_id }', // See Facebooks API to see what you can query for
+        },
+       // key: process.env.FACEBOOK_GRAPH_TOKEN, // You will need to create a Facebook application and go through review in order to get an API token.
+        key: '2009365739351414|66f59b6a0eea9232870bc90e061faca8', // You will need to create a Facebook application and go through review in order to get an API token.
+      },
+    },
+    {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'images',

@@ -9,7 +9,8 @@ import 'typeface-work-sans'
 import 'typeface-boogaloo'
 import 'typeface-acme'
 import { AnimatedBox, AnimatedFlex, Box, Flex, Button } from '../elements'
-
+import Popup from '../components/popup'
+import FacebookWallPosts from '../components/facebook-post/facebook-wall-posts.tsx'
 import theme from '../../config/theme'
 import reset from '../styles/reset'
 
@@ -281,6 +282,17 @@ box-sizing:border-box;
     }
   }
 `
+const ButtonPopup = styled.button`
+ background: ${props => props.theme.colors.primary};
+  color: black;
+  position:fixed;
+  top:80%;
+  right:0;
+  border:0;
+  padding:1em;
+  z-index:6001;
+  cursor:pointer;
+`
 
 
 type LayoutProps = { children: React.ReactNode } & typeof defaultProps
@@ -312,6 +324,8 @@ const Layout = ({ children, color, header, footer }: LayoutProps) => {
  
   
   })
+
+  const [isPopupOpen, setPopupIsOpen] = useState(false);
 
   return (
     <ThemeProvider theme={theme}>
@@ -378,12 +392,15 @@ const Layout = ({ children, color, header, footer }: LayoutProps) => {
           </Headroom>
           </>
         }
-
+        
           <Main>{children}</Main>
           <Partenaires/>
           {footer && <Footer/>}
-          
+          <ButtonPopup onClick={() => setPopupIsOpen(!isPopupOpen)}>{isPopupOpen?"Fermer":"News"}</ButtonPopup>
+     <Popup isOpen={isPopupOpen} setIsOpen={setPopupIsOpen} ><FacebookWallPosts/></Popup>   
         </Wrapper>
+
+
       </>
     </ThemeProvider>
   )

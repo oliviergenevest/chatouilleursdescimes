@@ -22,6 +22,7 @@ const PBox = styled(AnimatedBox)`
 background-color:${({ bc }) => bc}; 
 text-align:center;
 border-radius:0.5em;
+margin-bottom:1em;
  `
   return (
     <Layout>

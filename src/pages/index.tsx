@@ -9,6 +9,8 @@ import Logo from '../components/logo'
 import Ribbon from '../components/ribbon'
 import Slideshow from '../components/slideshow'
 import BookingForm from '../components/booking-form'
+
+
 import Layout from '../components/layout'
 import Packs from './packs'
 import patternWhiteSVG from '../images/pattern-white.svg'
@@ -76,10 +78,10 @@ const Illustration = styled.div`
 
 
   // gradient noir => transparent sur zone illustration
-  &::before{
+  &::after{
     content:'';
      background: linear-gradient(to left, rgba(0, 0, 0, 0.7), rgba(0, 24, 49, 0));
-    z-index: 1;
+   
     position: absolute;
     top: 0;
     left: 0;
@@ -257,6 +259,9 @@ const AreaPacks = styled(animated.div)`
 const Index: React.FunctionComponent<PageProps> = ({ data: { bgImage, teaserImage, teaserImageElephant,packs } }) => { 
   const [isBookingFormOpen, setBookingFormOpened] = useState(false)
   const handleClick = () => setBookingFormOpened(!isBookingFormOpen) 
+  
+ 
+
   const pageAnimation = useSpring({
       config: config.slow,
       from: { opacity: 0 },
@@ -284,7 +289,9 @@ const Index: React.FunctionComponent<PageProps> = ({ data: { bgImage, teaserImag
   return (
     <Layout color="black" header={true} footer={true}>
       <SEO title="Découvrez la grimpe d'arbres sur des sites remarquables aux portes des Gorges de l'Ardèche- Chatouilleurs des Cimes" desc={ `${siteConfig.siteTitle}` | `${siteConfig.siteHeadline}`}/>
-       <Area>  
+      
+      <Area>  
+
         <Content   py={[2, 3, 4, 5]}  mb={[10,10,0,0]} flexDirection="column" alignItems="center" justifyContent= "center">
           <Section  
             style={{'maxWidth':"550px"}}
@@ -296,6 +303,7 @@ const Index: React.FunctionComponent<PageProps> = ({ data: { bgImage, teaserImag
            > 
            {  /* <AnimatedBox style={logoAnimation} width="100%" ><Logo fluid/></AnimatedBox>*/}
               <AnimatedBox style={contentAnimation}>
+             
                 <Hero >Une aventure géniali’cime !</Hero>
                 <p>Vivez une expérience insolite au cœur des arbres sur des sites exceptionnels à travers un panel d’activités sportives, ludiques et sensationnelles accessibles à tous.</p>
               </AnimatedBox>
@@ -306,7 +314,7 @@ const Index: React.FunctionComponent<PageProps> = ({ data: { bgImage, teaserImag
                 </PButtonOpenBookingForm>
               </AnimatedBox> 
               <AnimatedBox style={contentAnimation}>
-              
+             
                 <p>Ouvert toute l'année, dès 7 ans, adapté handisport, découvrez la grimpe d'arbres sur des sites remarquables à Saint-Julien-de-Peyrolas, aux portes des Gorges de l'Ardèche.</p>                  
                 <p><a href={'https://www.facebook.com/'+`${siteConfig.facebookPageID}`} target="blank" title="page facebook des chatouilleurs des cimes" ><FaFacebook size="50px"/></a>
                 <br/>Retrouvez toutes les infos sur notre page <a href={'https://www.facebook.com/'+`${siteConfig.facebookPageID}`} target="blank" title="page facebook des chatouilleurs des cimes" >facebook</a> ou par téléphone au <span style={{'whiteSpace':'nowrap'}}>06 49 00 99 20</span>.
@@ -322,6 +330,7 @@ const Index: React.FunctionComponent<PageProps> = ({ data: { bgImage, teaserImag
            </Box>
        </CtaButton>*/}
         <Illustration> 
+
         {/* <Ribbon text="Nouveauté 2019" orientation="bottom-right"/>*/}
          {/*   <Slideshow />*/}
            <Img 
@@ -374,8 +383,10 @@ const Index: React.FunctionComponent<PageProps> = ({ data: { bgImage, teaserImag
       </AreaPacks>
           
         </Content>
-      </AreaParcours>  
+      </AreaParcours>
+      
     </Layout>
+
   )
 }
 

@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import { config, useSpring, animated } from 'react-spring'
 import Layout from '../components/layout'
 import siteConfig from '../../config'
-import { Box, AnimatedBox, Button, AnimatedButton } from '../elements'
+import { Box, Flex, AnimatedBox, Button, AnimatedButton } from '../elements'
 import SEO from '../components/SEO'
 import { FaHiking, FaUniversalAccess, FaPagelines } from 'react-icons/fa';
 import theme from '../../config/theme'
@@ -35,12 +35,33 @@ const Side = styled(animated.div)`
 `
 
 const PBoxSide = styled(AnimatedBox)`
-    position: sticky;
-    top: 0;
-    max-width: 1400px;
-    margin: 0 auto;
-    text-align:center;
+  position: sticky;
+  top: 0;
+  max-width: 1400px;
+  margin: 0 auto;
+  text-align:center;
 `
+const Pricing = styled(Flex)`
+  align-items: stretch;
+  justify-content:space-around;
+
+`
+const PricingItem = styled(Flex)`
+  margin:.1em;
+  flex-direction:column;
+  background-color: ${props => props.theme.colors.primary};
+  border-radius:.3em;
+`
+const Audience = styled(AnimatedBox)`
+  span {font-weight:bold}
+`
+const Price = styled(AnimatedBox)`
+  color: white;
+  font-weight: bold;
+  font-size: 24px;
+  span {font-size:38px;}
+`
+
 const PBox = styled(AnimatedBox)`
  
   max-width: 1400px;
@@ -48,7 +69,7 @@ const PBox = styled(AnimatedBox)`
 `
 
 const Content = styled(Box)<{ bg: string }>`
-  background-color: ${props => transparentize(0.9, props.bg)};
+  background-color: ${props => transparentize(0.95, props.bg)};
 
   .gatsby-image-wrapper:not(:last-child) {
     margin-bottom: ${props => props.theme.space[10]};
@@ -121,6 +142,8 @@ type PageProps = {
     pack: {
       title_detail: string
       online_booking: boolean
+      tarif_adulte:number
+      tarif_enfant:number
       color: string
       category: string
       desc: string
@@ -212,9 +235,22 @@ const Pack: React.FunctionComponent<PageProps> = ({ data: { pack, images } }) =>
         </PackDescription>
 
         <Side style={sideBarAnimation}>
-          <PBoxSide  py={10} px={[6, 6, 8, 10]}   >
+          <PBoxSide  pb={12} px={[6, 6, 8, 10]}   >
+          <Pricing  py={10}>
+          { pack.tarif_adulte && <PricingItem  py={4} px={8}>
+                                    <Audience><span>Adultes </span>+14 ans</Audience>
+                                    <Price><span>{pack.tarif_adulte}</span> €</Price>
+                                 </PricingItem>
+          }
+          { pack.tarif_enfant && <PricingItem  py={4} px={8}>
+                                    <Audience><span>Enfants </span> 
+                                    7/13 ans</Audience>
+                                    <Price > <span>{pack.tarif_enfant}</span> €</Price>
+                                  </PricingItem>
+          }
+         </Pricing>
          { pack.online_booking ? 
-           <PButton color={theme.colors.secondary} py={4} px={8} to="./reservation">
+           <PButton color={theme.colors.secondary} py={4} px={8} to="/reservation">
            Réservez en ligne dès maintenant !
           </PButton>
             :
@@ -248,6 +284,8 @@ export const query = graphql`
       color
       category
       online_booking
+      tarif_adulte
+      tarif_enfant
       desc
       slug
       parent {
