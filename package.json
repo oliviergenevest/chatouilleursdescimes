@@ -23,8 +23,8 @@
     "test:compile:watch": "tsc --watch --project cypress/tsconfig.json",
     "test": "cross-env CYPRESS_SUPPORT=y npm-run-all -s test:compile server:run",
     "test:watch": "cross-env CYPRESS_SUPPORT=y npm-run-all -p test:compile:watch server:open",
-    "test:ci": "cross-env CYPRESS_SUPPORT=y npm-run-all -s test:compile server:ci",
-    "postinstall": "cd plugins/gatsby-plugin-cookiehub-modif/ && npm install"
+    "test:ci": "cross-env CYPRESS_SUPPORT=y npm-run-all -s test:compile server:ci"
+   // "postinstall": "cd plugins/gatsby-plugin-cookiehub-modif/ && npm install"
 
   },
   "dependencies": {
