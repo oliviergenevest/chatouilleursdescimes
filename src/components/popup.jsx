@@ -3,8 +3,8 @@ import styled from 'styled-components'
 import { AnimatedBox, Box, AnimatedButton, Button, Flex } from '../elements'
 import { useSpring, useTransition, animated , config} from "react-spring"
 import ScrollLock, { TouchScrollable } from 'react-scrolllock'
-
-
+import theme from '../../config/theme'
+import { FaTimes } from 'react-icons/fa'
 
 export default function Popup({ isOpen, setIsOpen, children }) {
   const props = useSpring({
@@ -24,7 +24,7 @@ export default function Popup({ isOpen, setIsOpen, children }) {
  
 
   return (
-    <ScrollLock isActive={isOpen} >
+   /* <ScrollLock isActive={isOpen} >*/
       <Wrapper style={{  zIndex: isOpen ? '6000':'-1'}}>
       
         <Overlay style={props}  />
@@ -32,26 +32,27 @@ export default function Popup({ isOpen, setIsOpen, children }) {
           ({ item, key, props }) =>
             item && (
               <Content key={key}  style={props}>
-               <Flex p={5} justifyContent={['flex-end']}>
+               
                  <PButtonClose
                   py={4} 
                   px={8}   
                   onClick={() => setIsOpen(false)} >
-                 X
+                <FaTimes />
                 </PButtonClose>
-              </Flex>
+            
                 <div>{children}</div>
               </Content>
             )
         )}
       </Wrapper>
-    </ScrollLock>  
+   /* </ScrollLock>  */
   );
 }
 
 const Wrapper = styled(animated.div)`
   position: fixed;
- 
+ bottom:0;
+ right:0;
   top: 0;
   left: 0;
   width: 100%;
@@ -66,28 +67,40 @@ const Wrapper = styled(animated.div)`
 const Content = styled(AnimatedBox)`
   position: relative;
   z-index:600;
-  border-radius: 2px;
-  background: #1f283d;
-  align-self: flex-start;
-  color: #fff;
-  width: 80%;
-  min-width:250px;
+  border-radius: .25em;
+  background: white;
+  color:black;
+  width: 60%;
   max-width:800px;
   box-sizing: border-box;
-  min-height: 100px;
-  max-height:700px;
   margin: auto;
-  margin-top: 150px;
-  overflow-y:auto;
+  margin-top: 3rem;
+  padding-top:2rem;
+  padding-bottom:0rem;
+  @media (max-width: ${props => props.theme.breakpoints[1]}) {
+     width: 90%;
+  }
+   @media (max-width: ${props => props.theme.breakpoints[2]}) {
+     width: 75%;
+  }
 
 `;
 
 
 const PButtonClose = styled(Button)`
-  background: black;
+cursor:pointer;
+  position:absolute;
+  right:-0.75rem;
+  top:-1rem;
+  background-color: ${props => props.theme.colors.primary};
   color: white;
   cursor:pointer;
- align-self:flex-end;
+  border-radius: 100%;
+  padding: 6px 8px 6px 8px;
+    &:hover, &:focus {
+        color:black;
+      background-color:white;
+    }
 `
 
 const Overlay = styled(animated.div)`

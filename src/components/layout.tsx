@@ -13,7 +13,7 @@ import Popup from '../components/popup'
 import FacebookWallPosts from '../components/facebook-post/facebook-wall-posts.tsx'
 import theme from '../../config/theme'
 import reset from '../styles/reset'
-
+import { FaWifi, FaBullhorn, FaTimes } from 'react-icons/fa'
 import Logo from './logo'
 import SubHeader from './subheader'
 
@@ -282,15 +282,17 @@ box-sizing:border-box;
     }
   }
 `
-const ButtonPopup = styled.button`
+const ButtonPopup = styled(animated.button)`
  background: ${props => props.theme.colors.primary};
   color: black;
   position:fixed;
   top:80%;
   right:0;
   border:0;
+
   padding:1em;
-  z-index:6001;
+  padding-left:3rem;
+  z-index:6000;
   cursor:pointer;
 `
 
@@ -321,11 +323,15 @@ const Layout = ({ children, color, header, footer }: LayoutProps) => {
   const MenuAnimation = useSpring({
   native: true,
   to: { opacity: mobileNavOpen ? 1 : 0, transform: mobileNavOpen ? 'translate3d(0,0,0)' : 'translate3d(0,-100%, 0)', backgroundColor: mobileNavOpen ? theme.colors.primary : theme.colors.black},
- 
-  
   })
 
   const [isPopupOpen, setPopupIsOpen] = useState(false);
+  const ButtonPopupAnimation = useSpring({
+  native: true,
+  to: { /*opacity: isPopupOpen ? 0.2 : 1,*/
+        transform: isPopupOpen ? 'translate3d(100%,0,0)' : 'translate3d(0,0, 0)'
+      }
+  })
 
   return (
     <ThemeProvider theme={theme}>
@@ -396,8 +402,11 @@ const Layout = ({ children, color, header, footer }: LayoutProps) => {
           <Main>{children}</Main>
           <Partenaires/>
           {footer && <Footer/>}
-          <ButtonPopup onClick={() => setPopupIsOpen(!isPopupOpen)}>{isPopupOpen?"Fermer":"News"}</ButtonPopup>
-     <Popup isOpen={isPopupOpen} setIsOpen={setPopupIsOpen} ><FacebookWallPosts/></Popup>   
+          <ButtonPopup onClick={() => setPopupIsOpen(!isPopupOpen)} style={ButtonPopupAnimation}>
+            <FaWifi size={20} style={{    position:'absolute', left:'1rem'}} />
+           News
+          </ButtonPopup>
+          <Popup isOpen={isPopupOpen} setIsOpen={setPopupIsOpen} ><FacebookWallPosts/></Popup>   
         </Wrapper>
 
 

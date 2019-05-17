@@ -24,12 +24,12 @@ console.log(data)
   return (
     <Box 
      px={[2,6, 6, 8, 10]}
-     pb={[8]}
-    style={{color:"white"}}>
+     pb={[2]}
+    >
 
       <p>{data.allFacebookPosts.edges[0].node.message}</p>
       <ImageWrapper><img width="100%" src={ `https://graph.facebook.com/${data.allFacebookPosts.edges[0].node.object_id}/picture/?type=normal`}/></ImageWrapper>
-      <p><Moment format="DD/MM/YYYY">
+      <p>Publié le : <Moment format="DD/MM/YYYY">
                      {data.allFacebookPosts.edges[0].node.created_time}
                   </Moment></p>
 
@@ -42,7 +42,7 @@ export default FacebookWallPosts
 
 export const query = graphql`
   query FacebookQuery {
-     allFacebookPosts(filter:{ message:{ne: null}},sort: { fields: [created_time], order: [DESC] }limit:1) {
+     allFacebookPosts(filter:{ message:{ne: null}},sort: { fields: [created_time], order: [DESC] }limit:3) {
     edges {
       node {
         message 
