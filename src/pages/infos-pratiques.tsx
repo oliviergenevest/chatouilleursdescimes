@@ -98,7 +98,7 @@ const PageInfosPratiques = () => {
 
         <PBox p={[6, 8, 10]} bc='#a4ce3b40'>
         <h2>Hébergement</h2>
-        <p>Des hébergements sont disponibles aux environs. Vous trouverez la liste complète sur le site de la Mairie : <a href="http://saintjuliendepeyrolas.fr/hebergement-2/" target="blank">http://saintjuliendepeyrolas.fr/hebergement-2</a>. Nous vous recommandons les hébergements suivants : Domaine du Pont d'Ardèche, Domaine Saint Pancrace.</p>
+        <p>Des hébergements sont disponibles aux environs. Vous trouverez la liste complète sur le  <a href="http://saintjuliendepeyrolas.fr/hebergement-2/" target="blank">site de la Mairie</a>. Nous vous recommandons les hébergements suivants : Domaine du Pont d'Ardèche, Domaine Saint Pancrace.</p>
         </PBox>
         <PBox p={[6, 8, 10]} bc='#b1b1b138'>
         <h2>Localisation</h2>

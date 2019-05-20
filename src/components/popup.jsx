@@ -59,7 +59,7 @@ const Wrapper = styled(animated.div)`
   height: 100%;
   display: flex;
   align-items: center;
-  overflow: scroll;
+  overflow-y: auto;
 
  
 `;

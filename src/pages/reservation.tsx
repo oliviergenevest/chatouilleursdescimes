@@ -25,7 +25,7 @@ const Réservation = () => {
        <p>Bienvenue dans notre billetterie en ligne avec paiement sécurisé par carte bancaire.
 Commandez vos billets en quelques clics et recevez vos tickets électroniques nominatifs, directement par e-mail.</p>
 
-     <iframe src="https://www.billetweb.fr/shop.php?event=chatouilleurs-des-cimes" width="100%" height="650px" frameBorder="0"></iframe>
+     <iframe title="Réservation billet web" src="https://www.billetweb.fr/shop.php?event=chatouilleurs-des-cimes" width="100%" height="650px" frameBorder="0"></iframe>
        
       </AnimatedBox>
     </Layout> 
