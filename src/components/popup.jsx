@@ -59,7 +59,7 @@ const Wrapper = styled(animated.div)`
   height: 100%;
   display: flex;
   align-items: center;
-  overflow: hidden;
+  overflow: scroll;
 
  
 `;
@@ -107,8 +107,12 @@ const Overlay = styled(animated.div)`
   position: absolute;
   top: 0;
   left: 0;
+  bottom:0;
+  right:0;
   width: 100%;
   height: 100%;
+  max-height: 100vh;
+    overflow-y: auto;
   background:rgba(0, 0, 0, 0.84);
-  overflow: hidden;
+  /*overflow: hidden;*/
 `;
