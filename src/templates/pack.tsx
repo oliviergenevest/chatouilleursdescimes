@@ -254,7 +254,7 @@ const Pack: React.FunctionComponent<PageProps> = ({ data: { pack, images } }) =>
            Réservez en ligne dès maintenant !
           </PButton>
             :
-          <PButton color={theme.colors.secondary} py={4} px={8} to="./contact">
+          <PButton color={theme.colors.secondary} py={4} px={8} to="/contact">
            Ce pack est sur devis. Contactez-nous pour plus d'information.
           </PButton>
           }
