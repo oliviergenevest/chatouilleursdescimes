@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Moment from 'react-moment'
+import 'moment/locale/fr'
 import {  Link, useStaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import { readableColor } from 'polished'
@@ -15,25 +16,35 @@ const Left = styled(Box)`
 const ImageWrapper = styled.div`
   width:100%;
   overflow:hidden;
+  text-align:center;
+  flex: 1; 
+  img {width:100%}
+ 
 `
 
 const FacebookWallPosts = () => {
 
   const data = useStaticQuery(query)
-console.log(data)
+//console.log(data)
+
   return (
-    <Box 
+    <Flex 
      px={[2,6, 6, 8, 10]}
      pb={[2]}
+     flexDirection={['column']}
     >
 
       <p>{data.allFacebookPosts.edges[0].node.message}</p>
-      <ImageWrapper><img width="100%" src={ `https://graph.facebook.com/${data.allFacebookPosts.edges[0].node.object_id}/picture/?type=normal`}/></ImageWrapper>
-      <p>Publié le : <Moment format="DD/MM/YYYY">
+      <a href={data.allFacebookPosts.edges[0].node.link} target="_blank" rel="noopener noreferer">
+        <ImageWrapper>
+          <img src={ `https://graph.facebook.com/${data.allFacebookPosts.edges[0].node.object_id}/picture/?type=normal`}/>
+        </ImageWrapper>
+      </a>
+      <p>Publié <Moment locale="fr-FR" format="dddd D MMMM YYYY" >
                      {data.allFacebookPosts.edges[0].node.created_time}
                   </Moment></p>
 
-    </Box>
+    </Flex>
   )
 }
 

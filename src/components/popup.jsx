@@ -24,10 +24,10 @@ export default function Popup({ isOpen, setIsOpen, children }) {
  
 
   return (
-   /* <ScrollLock isActive={isOpen} >*/
+    <ScrollLock isActive={isOpen} >
       <Wrapper style={{  zIndex: isOpen ? '6000':'-1'}}>
       
-        <Overlay style={props}  />
+        <Overlay style={props}  onClick={() => setIsOpen(false)} />
         {transitions.map(
           ({ item, key, props }) =>
             item && (
@@ -45,7 +45,7 @@ export default function Popup({ isOpen, setIsOpen, children }) {
             )
         )}
       </Wrapper>
-   /* </ScrollLock>  */
+    </ScrollLock>  
   );
 }
 
@@ -96,7 +96,7 @@ cursor:pointer;
   color: white;
   cursor:pointer;
   border-radius: 100%;
-  padding: 6px 8px 6px 8px;
+  padding: 6px 8px 4px 8px;
     &:hover, &:focus {
         color:black;
       background-color:white;

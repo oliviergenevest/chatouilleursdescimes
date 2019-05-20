@@ -289,11 +289,16 @@ const ButtonPopup = styled(animated.button)`
   top:80%;
   right:0;
   border:0;
-
   padding:1em;
   padding-left:3rem;
   z-index:6000;
   cursor:pointer;
+  border-radius: 0.25em 0px 0px 0.25em;
+  &:hover svg {
+    color: ${props => props.theme.colors.secondary};
+
+  }
+
 `
 
 
@@ -328,8 +333,8 @@ const Layout = ({ children, color, header, footer }: LayoutProps) => {
   const [isPopupOpen, setPopupIsOpen] = useState(false);
   const ButtonPopupAnimation = useSpring({
   native: true,
-  to: { /*opacity: isPopupOpen ? 0.2 : 1,*/
-        transform: isPopupOpen ? 'translate3d(100%,0,0)' : 'translate3d(0,0, 0)'
+  to: { opacity: isPopupOpen ? 0.2 : 1,
+        transform: isPopupOpen ? 'translate3d(100%,0,0)' : 'translate3d(0%,0, 0)'
       }
   })
 
@@ -403,8 +408,7 @@ const Layout = ({ children, color, header, footer }: LayoutProps) => {
           <Partenaires/>
           {footer && <Footer/>}
           <ButtonPopup onClick={() => setPopupIsOpen(!isPopupOpen)} style={ButtonPopupAnimation}>
-            <FaWifi size={20} style={{    position:'absolute', left:'1rem'}} />
-           News
+            <FaWifi size={20} style={{    position:'absolute', left:'1rem'}} /><span>NEWS</span>
           </ButtonPopup>
           <Popup isOpen={isPopupOpen} setIsOpen={setPopupIsOpen} ><FacebookWallPosts/></Popup>   
         </Wrapper>

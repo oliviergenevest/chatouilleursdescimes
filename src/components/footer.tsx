@@ -100,7 +100,7 @@ const Footer = ({ color }: LayoutProps) => {
            <Wave orientation="bottom" fill="white"/>
           
             </Wrapper>
-  <Box px={[5, 6, 8, 10]} fontSize={1}  my={3} pb={3} >(c) Tous droits réservés - Chatouilleurs des cimes - 2019 - <a href="https://oliviergenevest.info" target="blank">crédits</a>
+  <Box px={[5, 6, 8, 10]} fontSize={1}  my={3} pb={3} >(c) Tous droits réservés - Chatouilleurs des cimes - 2019 - <Link to="/credits">crédits</Link>
             </Box>
             </>
           

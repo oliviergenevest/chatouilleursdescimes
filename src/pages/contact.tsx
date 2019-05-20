@@ -54,12 +54,12 @@ margin-bottom:1em;
           <p>Suivez-nous sur les réseaux sociaux :
         </p>
         <Flex alignItems={'center'} justifyContent={'center'} >
-          <a href={'https://www.facebook.com/'+`${siteConfig.facebookPageID}`} target="blank" title="facebook">
+          <a href={'https://www.facebook.com/'+`${siteConfig.facebookPageID}`} target="blank" rel="noreferrer noopener" title="Accéder à la page Facebook des Chatouilleurs des Cimes">
             <FaFacebook size={80} />
           </a>
-          <a href={'https://www.instagram.com/'+`${siteConfig.facebookPageID}`} target="blank" title="Instagram">
+         {/* <a href={'https://www.instagram.com/'+`${siteConfig.facebookPageID}`} target="blank" title="Instagram">
             <FaInstagram size={80} />
-          </a>
+          </a>*/}
         </Flex>
         </PBox>
         </Flex>

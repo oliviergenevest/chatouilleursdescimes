@@ -76,7 +76,7 @@ module.exports = {
   
 
    /*ONLY FOR PRODUCTION*/
-    { 
+  /*  { 
       resolve: `gatsby-plugin-cookiehub-modif`,
       options: {
         // your cookiehub widget ID
@@ -89,7 +89,7 @@ module.exports = {
         // enable ip anonymization
         anonymize: true,        
       },
-    },
+    },*/
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sitemap',
