@@ -112,8 +112,8 @@ const SEO = ({ title, desc, banner, pathname, node, individual }: Props) => {
     {
       '@type': 'ListItem',
       item: {
-        '@id': `${siteUrl}/instagram`,
-        name: 'About',
+        '@id': `${siteUrl}/infos-pratiques`,
+        name: 'Infos pratiques',
       },
       position: 4,
     },
@@ -187,7 +187,7 @@ const SEO = ({ title, desc, banner, pathname, node, individual }: Props) => {
         {/* Insert schema.org data conditionally (webpage/article) + everytime (breadcrumbs) */}
         {!individual && <script type="application/ld+json">{JSON.stringify(schemaOrgWebPage)}</script>}
         {individual && <script type="application/ld+json">{JSON.stringify(schemaArticle)}</script>}
-        <script type="application/ld+json">{JSON.stringify(breadcrumb)}</script>
+    {/*    <script type="application/ld+json">{JSON.stringify(breadcrumb)}</script> */}
         <script src="https://cdn.polyfill.io/v2/polyfill.min.js" />
       </Helmet>
       <Facebook
