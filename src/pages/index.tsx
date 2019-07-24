@@ -1,14 +1,21 @@
-import React from 'react'
+import React, {useState}  from 'react'
 import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
 import styled from 'styled-components'
 import { FaFacebook } from 'react-icons/fa';
-import { config, useSpring, animated } from 'react-spring'
+import { config, useSpring, animated,useTransition } from 'react-spring'
+
 import Logo from '../components/logo'
 import Ribbon from '../components/ribbon'
-import Layout from '../components/layout'
-import patternWhiteSVG from '../images/pattern-white.svg'
+import Slideshow from '../components/slideshow'
+import BookingForm from '../components/booking-form'
 
+
+import Layout from '../components/layout'
+import Packs from './packs'
+import patternWhiteSVG from '../images/pattern-white.svg'
+import Wave from '../elements/wave'
+import GridItem from '../components/grid-item'
 import { AnimatedBox, Box, AnimatedButton, Button, Flex } from '../elements'
 import SEO from '../components/SEO'
 import { ChildImageSharp } from '../types'
@@ -20,10 +27,10 @@ type PageProps = {
     bgImage: ChildImageSharp
   }
 };
-
+ 
 const Area = styled(animated.section)`
  min-height:100vh;
- 
+  width:100%;
   flex-grow: 1;
   display:grid;
   grid-template-columns: repeat(2, 1fr);
@@ -63,7 +70,7 @@ const CtaButton = styled(Flex)`
 
 const Illustration = styled.div`
   grid-area: illustration;
-  background-color:dodgerblue;
+  background-color:black;
  
   position: relative;
  
@@ -71,10 +78,10 @@ const Illustration = styled.div`
 
 
   // gradient noir => transparent sur zone illustration
-  &::before{
+  &::after{
     content:'';
      background: linear-gradient(to left, rgba(0, 0, 0, 0.7), rgba(0, 24, 49, 0));
-    z-index: 1;
+   
     position: absolute;
     top: 0;
     left: 0;
@@ -164,40 +171,128 @@ const PButton = styled(Button)<{ color: string }>`
   color:black;
 `
 
+const PButtonOpenBookingForm = styled(AnimatedButton)<{ color: string }>`
+ background: ${props => (props.color === 'white' ? 'black' : props.color)};
+  background: ${props => props.theme.colors.primary};
+  color: ${props => readableColor(props.color === 'white' ? 'black' : props.color)};
+  color:black;
+  cursor:pointer;
+  transition: ease 0.3s;
+   &:hover {
+    box-shadow: 0 5px 5px #c6ceb157 ;
 
+    transform: translateY(-5px);
+  }
+  &:focus {
+    outline: none;
+    box-shadow:  0 3px 3px #c6ceb157;
+  }
+`
+
+
+const AreaTeaser = styled(animated.section)`
+ position:relative; 
+ width:100%;
+  background-color:${props => props.theme.colors.secondary};
+ 
+  @media (max-width: ${props => props.theme.breakpoints[1]}) {
+    height: auto;   
+  }
+
+  .bgImageTeaser {
+    height:60vh;
+    width:100%;
+  }
+
+`
+
+const Teaser = styled(animated.h2)`
+width:66%;
+max-width:60rem;
+text-align:center;
+font-size:3rem;
+font-family:"acme"; 
+color:${props => props.theme.colors.white};
+@media (max-width: ${props => props.theme.breakpoints[2]}) {
+   font-size:2rem;
+  
+   width:100%;
+}
+`
+const ImgTeaserElephant = styled(Img)`
+width:33%;
+max-width:20rem;
+margin-right:3rem;
+border-radius:50%;
+   
+  @media (max-width: ${props => props.theme.breakpoints[2]}) {
+  display:none;
+  }
+`
+
+const AreaParcours = styled(animated.section)`
+  min-height:100vh; 
+  width:100%;
+  flex-grow: 1;
+  background-color:black;
+  @media (max-width: ${props => props.theme.breakpoints[1]}) {
+    height: auto;   
+  }
+`
+
+
+const AreaPacks = styled(animated.div)`
+  width:100%;
+  display: grid;
+  grid-gap:4rem;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 25vw;
+
+  @media (max-width: ${props => props.theme.breakpoints[2]}) {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 60vw;
+  }
+`
+ 
 
 /*Passer dans data les alias des requetes de données si besoin , cf en bas de page*/
-const Index: React.FunctionComponent<PageProps> = ({ data: { bgImage } }) => {
-  const pageAnimation = useSpring({
-    config: config.slow,
-    from: { opacity: 0 },
-    to: { opacity: 1 },
-  })
-const contentAnimation = useSpring({
-    config: config.slow,
-    delay: 600, 
-    from: { opacity: 0, transform: 'translate3d(0, 30px, 0)' },
-    to: { opacity: 1, transform: 'translate3d(0, 0, 0)' },
-  })
-const ctaAnimation = useSpring({
-    config: config.slow,
-    delay: 900, 
-    from: { opacity: 0, transform: 'translate3d(0, 30px, 0)' },
-    to: { opacity: 1, transform: 'translate3d(0, 0, 0)' },
-  })
-const logoAnimation = useSpring({
-    config: config.slow,
-    from: { opacity: 1, transform: 'translate3d(0, -80px, 0)' },
-    to: { opacity: 1, transform: 'translate3d(0, 0, 0)' },
-  })
+const Index: React.FunctionComponent<PageProps> = ({ data: { bgImage, teaserImage, teaserImageElephant,packs } }) => { 
+  const [isBookingFormOpen, setBookingFormOpened] = useState(false)
+  const handleClick = () => setBookingFormOpened(!isBookingFormOpen) 
+  
+ 
 
+  const pageAnimation = useSpring({
+      config: config.slow,
+      from: { opacity: 0 },
+      to: { opacity: 1 },
+    })
+  const contentAnimation = useSpring({
+      config: config.slow,
+      delay: 600, 
+      from: { opacity: 0, transform: 'translate3d(0, 30px, 0)' },
+      to: { opacity: 1, transform: 'translate3d(0, 0, 0)' },
+    })
+  const ctaAnimation = useSpring({
+      config: config.slow,
+      delay: 900, 
+      from: { opacity: 0, transform: 'translate3d(0, 30px, 0)' },
+      to: { opacity: 1, transform: 'translate3d(0, 0, 0)' },
+    })
+  const logoAnimation = useSpring({
+      config: config.slow,
+      from: { opacity: 1, transform: 'translate3d(0, -80px, 0)' },
+      to: { opacity: 1, transform: 'translate3d(0, 0, 0)' },
+    })
+ 
+ 
   return (
-    <Layout color="black" header={false} footer={false}>
-      <SEO title={`${siteConfig.siteTitle}`} desc={ `${siteConfig.siteTitle}` | `${siteConfig.siteHeadline}`}/>
-       <Area>
+    <Layout color="black" header={true} footer={true}>
+      <SEO title="Découvrez la grimpe d'arbres sur des sites remarquables aux portes des Gorges de l'Ardèche- Chatouilleurs des Cimes" desc={ `${siteConfig.siteTitle}` | `${siteConfig.siteHeadline}`}/>
       
-       <Content   py={[2, 3, 4, 5]}  mb={[10,10,0,0]} flexDirection="column" alignItems="center" justifyContent= "center">
-         
+      <Area>  
+
+        <Content   py={[2, 3, 4, 5]}  mb={[10,10,0,0]} flexDirection="column" alignItems="center" justifyContent= "center">
           <Section  
             style={{'maxWidth':"550px"}}
             px={[6, 6, 8, 10]}  
@@ -206,54 +301,92 @@ const logoAnimation = useSpring({
             justifyContent="center"
 
            > 
-              <AnimatedBox style={logoAnimation} width="100%" ><Logo fluid/></AnimatedBox>
+           {  /* <AnimatedBox style={logoAnimation} width="100%" ><Logo fluid/></AnimatedBox>*/}
               <AnimatedBox style={contentAnimation}>
+             
                 <Hero >Une aventure géniali’cime !</Hero>
                 <p>Vivez une expérience insolite au cœur des arbres sur des sites exceptionnels à travers un panel d’activités sportives, ludiques et sensationnelles accessibles à tous.</p>
               </AnimatedBox>
               <AnimatedBox py={[4, 5, 6, 7]} style={ctaAnimation} >
-                <PButton color="red" py={4} px={8}>
-              
-                 <a href="https://www.billetweb.fr/chatouilleurs-des-cimes" target="blank" style={{'color':'black'}}>Réservation en ligne</a>
-               </PButton>
-              </AnimatedBox>
-              
+               <PButtonOpenBookingForm color="red" py={4} px={8}   
+                      onClick={ handleClick } >
+               Réservation en ligne
+                </PButtonOpenBookingForm>
+              </AnimatedBox> 
               <AnimatedBox style={contentAnimation}>
-                <p>Ouvert toute l'année, dès 7 ans, adapté handisport, découvrez la grimpe d'arbres sur des sites remarquables à Saint-Julien-de-Peyrolas, aux portes des Gorges de l'Ardèche.</p>
-<p><a href={'https://www.facebook.com/'+`${siteConfig.facebookPageID}`} target="blank" title="page facebook des chatouilleurs des cimes" ><FaFacebook size="50px"/></a><br/>Retrouvez toutes les infos sur notre page <a href={'https://www.facebook.com/'+`${siteConfig.facebookPageID}`} target="blank" title="page facebook des chatouilleurs des cimes" >facebook</a> ou par téléphone au <span style={{'whiteSpace':'nowrap'}}>06 49 00 99 20</span>.</p>
-              </AnimatedBox>
-
+             
+                <p>Ouvert toute l'année, dès 7 ans, adapté handisport, découvrez la grimpe d'arbres sur des sites remarquables à Saint-Julien-de-Peyrolas, aux portes des Gorges de l'Ardèche.</p>                  
+                <p><a href={'https://www.facebook.com/'+`${siteConfig.facebookPageID}`} target="blank" title="page facebook des chatouilleurs des cimes" ><FaFacebook size="50px"/></a>
+                <br/>Retrouvez toutes les infos sur notre page <a href={'https://www.facebook.com/'+`${siteConfig.facebookPageID}`} target="blank" title="page facebook des chatouilleurs des cimes" >facebook</a> ou par téléphone au <span style={{'whiteSpace':'nowrap'}}>06 49 00 99 20</span>.
+                </p>
+              </AnimatedBox>  
           </Section>
        </Content>
-      {/* <CtaButton alignItems="flex-end" justifyContent= "center">
+       {/* <CtaButton alignItems="flex-end" justifyContent= "center">
           <Box py={[4, 5, 6, 7]} px={[5, 6, 8, 10]} >
             <PButton color="red" py={4} px={8}>
              Réservations au 06 49 00 99 20
            </PButton>
            </Box>
        </CtaButton>*/}
-       <Illustration> 
-        {/*<Ribbon text="#GrimpeArbre #nouveauté2019"/>*/}
-         <Img 
-            fluid={bgImage.childImageSharp.fluid}
-            className="bgImage"
-            backgroundColor="black"
-          />
+        <Illustration> 
 
-          <div className="bgDots"></div>
-      </Illustration>
-     
+        {/* <Ribbon text="Nouveauté 2019" orientation="bottom-right"/>*/}
+         {/*   <Slideshow />*/}
+           <Img 
+              fluid={bgImage.childImageSharp.fluid}
+              className="bgImage"
+              backgroundColor="black"
+            />
+            <div className="bgDots"></div>
+        </Illustration> 
+
       </Area>
-    
-    
-
 
       {/* 
          <svg style={{position:'absolute',top:0,left:0,right:0,bottom:0,padding:'2rem',zIndex:-1}}width="100%" height="100%" viewBox="0 0 1650 784" fill="none" xmlns="http://www.w3.org/2000/svg" ><path d="M9.37403 556.426C65.3595 695.625 304.985 762.187 505.609 734.207C811.973 691.481 683.744 620.73 1103.63 734.207C1523.53 847.685 1306.52 553.119 1448.96 403.455C1592.87 252.246 1637.71 160.477 1523 147.964C1408.29 135.45 1407.4 200.689 1183.64 54.4901C959.878 -91.7086 747.745 110.945 622.305 75.6839C496.865 40.4225 181.932 46.8097 245.544 323.158C285.514 496.796 -60.6078 382.427 9.37403 556.426Z" fill="#4e4e4eb8"></path></svg>
-       
-    */}
-     
+      */} 
+      { <BookingForm  {...{isOpen:isBookingFormOpen, setBookingFormOpened}}/>
+      }
+
+      <AreaTeaser my={[10, 11, 12, 13]}>  
+        
+        <Content   px={[6, 6, 8, 10]} pb={[8,9,10,12]}  pt={[8,9,10,12]}   flexDirection="row" alignItems="center" justifyContent= "space-around">
+           <ImgTeaserElephant 
+
+            fluid={teaserImageElephant.childImageSharp.fluid}
+          
+            backgroundColor="black"
+          />
+           <Teaser>Découvrez un univers hors du temps qui éveillera vos sens par des jeux, des rires, des émotions au sein d'une nature enchantée. Venez rencontrer les Chatouilleurs des cimes !</Teaser>
+          
+        </Content> 
+        <Img 
+
+            fluid={teaserImage.childImageSharp.fluid}
+            className="bgImageTeaser"
+            backgroundColor="black"
+          />
+        <Wave orientation="bottom" />
+      </AreaTeaser>  
+      <AreaParcours>  
+
+        <Content   px={[6, 6, 8, 10]}   py={[2, 3, 4, 5]}  mb={[10,10,0,0]} flexDirection="column" alignItems="center" justifyContent= "center">
+          <h1>Nos formules</h1>
+          <AreaPacks>
+        {packs.edges.map(({ node: pack }) => (
+          <GridItem key={pack.slug} to={`/packs${pack.slug}`}>
+            <Img fluid={pack.cover.childImageSharp.fluid} />
+            <span>{pack.title}</span>
+          </GridItem>
+        ))}
+      </AreaPacks>
+          
+        </Content>
+      </AreaParcours>
+      
     </Layout>
+
   )
 }
 
@@ -269,10 +402,39 @@ export const query = graphql`
         }
       }
     }
+    teaserImage: file(sourceInstanceName: { eq: "images" }, name: { eq: "25" }) {
+      childImageSharp {
+        fluid(quality: 95, maxHeight: 1200) {
+          ...GatsbyImageSharpFluid_tracedSVG
+        }
+      }
+    }
+    teaserImageElephant: file(sourceInstanceName: { eq: "images" }, name: { eq: "teaser" }) {
+      childImageSharp {
+        fluid(quality: 95, maxHeight: 1200, maxWidth:1200) {
+          ...GatsbyImageSharpFluid_tracedSVG
+        }
+      }
+    }
     aboutUs: file(sourceInstanceName: { eq: "images" }, name: { eq: "about-us" }) {
       childImageSharp {
         fluid(quality: 95, maxHeight: 1200) {
           ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+    packs: allPacksYaml {
+      edges {
+        node {
+          title
+          slug
+          cover {
+            childImageSharp {
+              fluid(quality: 95, maxWidth: 1200) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
+          }
         }
       }
     }

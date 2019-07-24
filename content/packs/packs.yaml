@@ -1,0 +1,100 @@
+- title: "Pack Sensibl’arbre"
+  title_detail: "Pack Sensibl’arbre"
+  slug: "/pack-sensibl-arbre"
+  category: "Grimpe d'arbres | Découverte"
+  online_booking: 1
+  tarif_adulte: 20
+  tarif_enfant: 15
+  color: "black"
+  images: "sensiblarbre"
+  cover: "./sensiblarbre/sensiblarbre.jpg"
+  desc: "Un moment à votre rythme, accompagné par des passionnés des arbres, pour découvrir le fonctionnement de ces géants et leur porter un regard nouveau.
+"
+
+
+- title: "Pack Sensation"
+  title_detail: "Pack Sensation"
+  online_booking: 1
+  tarif_adulte: 25
+  tarif_enfant: 20
+  slug: "/pack-sensation"
+  category: "Grimpe d'arbres | Frisson | Sensation"
+  color: "black"
+  images: "sensation"
+  cover: "./sensation/sensation.jpg"
+  desc: "Un frisson entre deux arbres le temps de découvrir la verticalité sur un support vivant. Du saut pendulaire au tyrolienne catapulte; une installation adaptable à chaque site vous permettra de vivre une expérience unique."
+
+
+- title: "Pack Degust’arbre"
+  title_detail: "Pack Degust’arbre"
+  online_booking: 1
+  tarif_adulte: 30
+  tarif_enfant: null
+  slug: "/pack-degust-arbre"
+  category: "Grimpe d'arbres | Repas perché | Dégustation | Produits locaux"
+  color: "black"
+  images: "degustarbre"
+  cover: "./degustarbre/degustarbre.jpg"
+  desc: "Un petit déjeuner perché dans un décor naturel ou la nature se réveille au même temps que vous. 
+Une casse croûte perché à l’ombre avec ventilation naturel par le feuillage des arbres, suivi d’une sieste digestive dans un hamac ou filet perché.
+Une soirée pour profiter d’un coucher de soleil en hauteur avec une dégustation perché avec des produits locaux confortablement installé sur table, filet ou plateforme."
+
+- title: "Pack Decon’arbre"
+  title_detail: "Pack Decon’arbre"
+  online_booking: 0
+  tarif_adulte: null
+  tarif_enfant: null
+  slug: "/pack-decon-arbre"
+  category: "Grimpe d'arbres | Evènement spécial | Fête exceptionnelle"
+  color: "black"
+  images: "deconarbre"
+  cover: "./deconarbre/deconarbre.jpg"
+  desc: "Créons une fête exceptionnelle pour votre occasion remarquable; anniversaire, mariage, enterrement de jeune fille/garçon, retraite etc. Donne nous une idée, on joue avec... Une activité à thème, déguisements et jeux dans l’arbre dans un univers arboricole."
+
+- title: "Pack Arbr’autonomie"
+  title_detail: "Pack Arbr’autonomie"
+  online_booking: 0
+  tarif_adulte: null
+  tarif_enfant: null
+  slug: "/pack-arbre-autonomie"
+  category: "Grimpe d'arbres | Autonomie | Apprentissage"
+  color: "black"
+  images: "autonomie"
+  cover: "./autonomie/autonomie.jpg"
+  desc: "Apprendre à monter et se déplacer dans les cimes en toute sécurité et autonomie . Installation d’une corde d'accès, noeuds, matériel utilisé, connaissances des principales espèces d’arbres et leur fonctionnement."
+
+- title: "Pack Arbr’école"
+  title_detail: "Pack Arbr’école"
+  online_booking: 0
+  tarif_adulte: null
+  tarif_enfant: null
+  slug: "/pack-arbre-ecole"
+  category: "Grimpe d'arbre | groupes scolaires | pédagogique | sur devis"
+  color: "black"
+  images: "arbrecole"
+  cover: "./arbrecole/arbrecole.jpg"
+  desc: "Développement d’un projet pédagogique et sportif autour de l’arbre et la forêt spécialement adapté au groupes scolaires. Possibilité sur une séance d’initiation et découverte ou sur un cycle de plusieurs séances."
+
+- title: "Pack Nuitée dans les cimes"
+  title_detail: "Pack Nuitée dans les cimes"
+  slug: "/pack-nuitee-dans-les-cimes"
+  online_booking: 0
+  tarif_adulte: null
+  tarif_enfant: null
+  category: "Grimpe d'arbres | Nuit perchée"
+  color: "black"
+  images: "nuit"
+  cover: "./nuit/nuit.jpg"
+  desc: "Dormir en toute sécurité dans un hamac perché dans les cimes. Se faire réveiller par le chant des oiseaux et observer les animaux sauvages dans leur intimité nocturne. Venez vivre une expérience insolite que vous n’êtes pas prêts d’oublier."
+
+- title: "L’arbre pour tous"
+  title_detail: "L’arbre pour tous"
+  online_booking: 0
+  tarif_adulte: null
+  tarif_enfant: null
+  slug: "/l-arbre-pour-tous"
+  category: "Grimpe d'arbres | Accessibilité"
+  color: "black"
+  images: "arbrepourtous"
+  cover: "./arbrepourtous/arbrepourtous.jpg"
+  desc: "Nous proposons des solutions adaptés pour rendre l’univers de la grimpe d’arbres accessible à tous et pour toutes nos prestations. Oubliez la différence, dans l’arbre tout le monde se retrouve au même niveau."

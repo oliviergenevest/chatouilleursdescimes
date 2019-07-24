@@ -1,12 +1,17 @@
+const dotenv = require("dotenv");
 const config = require('./config')
-
 const pathPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix
+if (process.env.ENVIRONMENT !== "production") {
+  dotenv.config();
+}
+
+const { GOOGLE_MAPS_API_KEY } = process.env;
+const { FACEBOOK_GRAPH_TOKEN } = process.env;
  
 module.exports = { 
   pathPrefix: config.pathPrefix,
   siteMetadata: {
     siteUrl: config.siteUrl + pathPrefix,
-    pathPrefix,
     title: config.siteTitle,
     titleAlt: config.siteTitleAlt,
     description: config.siteDescription,
@@ -26,8 +31,15 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'projects',
-        path: `${__dirname}/content/projects`,
+        name: 'packs',
+        path: `${__dirname}/content/packs`,
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'partenaires',
+        path: `${__dirname}/content/partenaires`,
       },
     },
     {
@@ -38,18 +50,46 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-facebook`,
+      options: {
+        places: [`chatouilleursdescimes`], // Can be either a numeric ID or the URL ID
+        params: {
+          fields: 'hours, posts { id,from,name,message,created_time,story,description,link,picture,object_id }', // See Facebooks API to see what you can query for
+        },
+        key: FACEBOOK_GRAPH_TOKEN, 
+      },
+    },
+    {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'images',
         path: `${__dirname}/src/images`,
       },
     },
-    {
-      resolve: 'gatsby-plugin-google-analytics',
+     {
+      resolve: 'gatsby-source-filesystem',
       options: {
-        trackingId: config.googleAnalyticsID,
+        name: 'pdf',
+        path: `${__dirname}/src/pdf`,
       },
     },
+  
+
+   /*ONLY FOR PRODUCTION*/
+  /*  { 
+      resolve: `gatsby-plugin-cookiehub-modif`,
+      options: {
+        // your cookiehub widget ID
+        cookihubId: "c9710f92",
+        // your google analytics tracking id
+        trackingId: config.googleAnalyticsID,
+        gtagId: config.googleAnalyticsID,
+        // Puts tracking script in the head instead of the body
+        head: false,
+        // enable ip anonymization
+        anonymize: true,        
+      },
+    },*/
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sitemap',

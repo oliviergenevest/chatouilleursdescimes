@@ -1,17 +1,23 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { graphql, Link, useStaticQuery } from 'gatsby'
 import { readableColor } from 'polished'
+import { config, useSpring, animated } from 'react-spring'
+import ScrollLock, { TouchScrollable } from 'react-scrolllock'
+import { HamburgerSpring } from 'react-animated-burgers'
 import 'typeface-work-sans'
 import 'typeface-boogaloo'
 import 'typeface-acme'
-import { AnimatedBox, Box, Flex, Button } from '../elements'
-import Wave from '../elements/Wave.tsx'
+import { AnimatedBox, AnimatedFlex, Box, Flex, Button } from '../elements'
+import Popup from '../components/popup'
+import FacebookWallPosts from '../components/facebook-post/facebook-wall-posts.tsx'
 import theme from '../../config/theme'
 import reset from '../styles/reset'
-
+import { FaWifi, FaBullhorn, FaTimes } from 'react-icons/fa'
 import Logo from './logo'
 import SubHeader from './subheader'
+
+import Partenaires from './partenaires'
 import Footer from './footer'
 import Headroom from 'react-headroom'
 import headroomCss from './headroom'
@@ -39,6 +45,7 @@ const GlobalStyles = createGlobalStyle`
       font-weight:bold;
       font-size: ${theme.fontSizes[7]};
       text-transform:uppercase;
+    /*  text-shadow: 0px 2px 40px #00000020, 0px 2px 5px #494992;*/
     }
     h2 {
       font-size: ${theme.fontSizes[4]};
@@ -57,8 +64,7 @@ const GlobalStyles = createGlobalStyle`
     }
     
     @media (max-width: 600px) {
-      font-size: 16px;
-      
+    
       h1 {
         font-size: ${theme.fontSizes[4]};
       
@@ -88,11 +94,14 @@ const GlobalStyles = createGlobalStyle`
     font-family: 'Work Sans', '-apple-system', 'Roboto', 'Helvetica', 'Arial', sans-serif;
     /*background: white;*/
     font-size: 18px;
+      @media (max-width: 600px) {
+      font-size: 16px;
+      }
   }
 
   a {
     transition: all 0.3s ease-in-out;
-    color: ${theme.colors.secondary};
+    color:inherit;
     text-decoration:none;
     &:hover,
     &:focus {
@@ -100,6 +109,13 @@ const GlobalStyles = createGlobalStyle`
       text-decoration: underline ;
     }
   }
+
+ul {
+  list-style-type:none;
+ /* margin: 0;*/
+  padding: 0;
+}
+
   ${headroomCss}
   ${reset}
   
@@ -119,15 +135,6 @@ const Wrapper = styled.div`
 min-height:100vh;
 display:flex;
 flex-direction:column;
- /* display: grid;
-  grid-template-columns: ${props => props.theme.sidebarWidth.big} 1fr;
-  @media (max-width: ${props => props.theme.breakpoints[4]}) {
-    grid-template-columns: ${props => props.theme.sidebarWidth.normal} 1fr;
-  }
-
-  @media (max-width: ${props => props.theme.breakpoints[2]}) {
-    grid-template-columns: 1fr;
-  }*/
 `
 
 const Header = styled(Box)<{ bg: string }>`
@@ -137,38 +144,68 @@ const Header = styled(Box)<{ bg: string }>`
   @media (max-width: ${props => props.theme.breakpoints[1]}) {
     position: relative;
     width: 100%;
- background: ${props => props.bg};
+    background: ${props => props.bg};
+  }
+  /* hamburger button */
+  button {
+     @media (min-width: ${props => props.theme.breakpoints[2]}) {
+        display:none;
+    }
   }
 
+`
 
- /* position: fixed;
-  height: 100%;
-  width: ${props => props.theme.sidebarWidth.big};
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-
- 
-
-  @media (max-width: ${props => props.theme.breakpoints[4]}) {
-    width: ${props => props.theme.sidebarWidth.normal};
-  }
-
+const NavTop = styled(Flex)<{ color: string }>`
+  
   @media (max-width: ${props => props.theme.breakpoints[2]}) {
-    position: relative;
-    width: 100%;
-  }
+      display:none;
+    }
 
-  svg {
-    fill: ${props => readableColor(`${props.bg}`)};
-  }*/
+  a.navlink {
+    text-transform:uppercase;
+    text-decoration: none;
+    color: white;
+    font-size: ${props => props.theme.fontSizes[1]};
+    line-height: 1.5;
+    margin-left: ${props => props.theme.space[4]};
+    &:hover,
+    &:focus,
+    &.navlink-active {
+      color: ${props => props.theme.colors.primary};
+    }
+  }
+   
+  .navlink {
+    display: inline-block;
+    position: relative;
+    color: inherit;
+     text-decoration: none ;
+  }
+  .navlink::after {
+    content: '';
+    position: absolute;
+    width: 50%;
+    transform: scaleX(0);
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+
+    background-color: ${theme.colors.secondary};
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+   .navlink:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+   
+  }
+  
 `
 
 
 const Nav = styled(Flex)<{ color: string }>`
   a {
-   /* text-transform:uppercase;*/
+    text-transform:uppercase;
     text-decoration: none;
     color: ${props => readableColor(`${props.color}`)};
     font-size: ${props => props.theme.fontSizes[1]};
@@ -201,7 +238,9 @@ const Main = styled.main`
     position:relative;
     flex-grow:1; 
     display: flex;
+    flex-direction:column;
     align-items: center;
+    align-items: stretch;
     justify-content: center;
 
 /*  @media (min-width: calc(${props => props.theme.breakpoints[2]} + 1px)) {
@@ -216,13 +255,59 @@ const PButton = styled(Button)<{ color: string }>`
   color: ${props => readableColor(props.color === 'white' ? 'black' : props.color)};
   color:black;
 `
+/*MENU MOBILE*/
+const MenuMobile = styled(animated.div)`
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  z-index:500;
+
+`
+const ContentMobile = styled(Flex)`
+height:100%;
+padding-top:168px;
+box-sizing:border-box;
+
+  nav {
+    display:flex;
+    flex-direction:column;
+    align-content:center;
+    justify-content:center;
+    a {
+      font-size:26px;
+      text-transform:uppercase;
+      margin:1rem;
+    }
+  }
+`
+const ButtonPopup = styled(animated.button)`
+ background: ${props => props.theme.colors.primary};
+  color: black;
+  position:fixed;
+  top:80%;
+  right:0;
+  border:0;
+  padding:1em;
+  padding-left:3rem;
+  z-index:6000;
+  cursor:pointer;
+  border-radius: 0.25em 0px 0px 0.25em;
+  &:hover svg {
+    color: ${props => props.theme.colors.secondary};
+
+  }
+
+`
+
 
 type LayoutProps = { children: React.ReactNode } & typeof defaultProps
 
 const defaultProps = {
   color: 'black',
   header:true,
-  footer:false,
+  footer:true,
 }
 
 interface QueryResult {
@@ -234,18 +319,56 @@ interface QueryResult {
       }
     }[]
   }
-}
+};
 
 const Layout = ({ children, color, header, footer }: LayoutProps) => {
   const data: QueryResult = useStaticQuery(query)
+  // Mobile Menu logic
+  const [mobileNavOpen, setMobileNavOpen] = useState(false) // closed by default
+  const MenuAnimation = useSpring({
+  native: true,
+  to: { opacity: mobileNavOpen ? 1 : 0, transform: mobileNavOpen ? 'translate3d(0,0,0)' : 'translate3d(0,-100%, 0)', backgroundColor: mobileNavOpen ? theme.colors.primary : theme.colors.black},
+  })
+
+  const [isPopupOpen, setPopupIsOpen] = useState(false);
+  const ButtonPopupAnimation = useSpring({
+  native: true,
+  to: { opacity: isPopupOpen ? 0.2 : 1,
+        transform: isPopupOpen ? 'translate3d(100%,0,0)' : 'translate3d(0%,0, 0)'
+      }
+  })
 
   return (
     <ThemeProvider theme={theme}>
       <>
         <GlobalStyles />
-     
+    
         <Wrapper>
+          
+
           {header &&
+            <>
+            <ScrollLock  isActive={mobileNavOpen} >
+              <MenuMobile style={ MenuAnimation}>
+
+                <ContentMobile flexDirection={['column']}
+                    alignItems={['center']}
+                    justifyContent="center"
+                    pb={[6]}
+                    >
+               
+                  <nav>
+                    {data.navigation.edges.map(({ node: item }) => (
+                    <PartialNavLink to={item.link} key={item.name} >
+                      {item.name}
+                    </PartialNavLink>
+                    ))}
+                  </nav>
+                </ContentMobile>    
+              </MenuMobile>
+             </ScrollLock>
+         
+
           <Headroom calcHeightOnResize disableInlineStyles>
            <SubHeader/>
            <Header bg={color} as="header" m={0} py={[2,4,6]}   px={[6, 6, 8, 10]}  >
@@ -257,34 +380,40 @@ const Layout = ({ children, color, header, footer }: LayoutProps) => {
                 justifyContent="space-between"
               >
                  <Link to="/" aria-label="Accueil"><Logo fixed/></Link>
-                  <Nav  color={color}>
-                   {/*}
+                  <NavTop  color={color}>
+                   
                    {data.navigation.edges.map(({ node: item }) => (
-                  <Link to={item.link} key={item.name}>
+                  <PartialNavLink to={item.link} key={item.name}>
                     {item.name}
-                  </Link>
+                  </PartialNavLink>
                   ))} 
-                  */}
-
-                  </Nav>
-                
+                  </NavTop>
+                  <HamburgerSpring isActive={mobileNavOpen} toggleButton={() => {setMobileNavOpen(!mobileNavOpen)}} buttonStyle={{ outline: "none" }} barColor="white" aria-label="Navigation"/>
+                  
+                {/*
                   <AnimatedBox py={[2, 2, 3, 3]}  >
                 <PButton color="red" py={4} px={8}>
               
                  <a href="https://www.billetweb.fr/chatouilleurs-des-cimes" target="blank" style={{'color':'black'}}>Réservation en ligne</a>
                </PButton>
-              </AnimatedBox>
+              </AnimatedBox>*/}
                  
               </Flex>
             </Header>
           </Headroom>
+          </>
         }
-
+        
           <Main>{children}</Main>
-       
+          <Partenaires/>
           {footer && <Footer/>}
-          
+          <ButtonPopup onClick={() => setPopupIsOpen(!isPopupOpen)} style={ButtonPopupAnimation}>
+            <FaWifi size={20} style={{    position:'absolute', left:'1rem'}} /><span>NEWS</span>
+          </ButtonPopup>
+          <Popup isOpen={isPopupOpen} setIsOpen={setPopupIsOpen} ><FacebookWallPosts/></Popup>   
         </Wrapper>
+
+
       </>
     </ThemeProvider>
   )
