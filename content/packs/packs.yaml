@@ -3,8 +3,8 @@
   slug: "/pack-sensibl-arbre"
   category: "Grimpe d'arbres | Découverte"
   online_booking: 1
-  tarif_adulte: 20
-  tarif_enfant: 15
+  tarif_adulte: 35
+  tarif_enfant: 25
   color: "black"
   images: "sensiblarbre"
   cover: "./sensiblarbre/sensiblarbre.jpg"
@@ -14,9 +14,9 @@
 
 - title: "Pack Sensation"
   title_detail: "Pack Sensation"
-  online_booking: 1
-  tarif_adulte: 25
-  tarif_enfant: 20
+  online_booking: 0
+  tarif_adulte: null
+  tarif_enfant: null
   slug: "/pack-sensation"
   category: "Grimpe d'arbres | Frisson | Sensation"
   color: "black"
@@ -27,8 +27,8 @@
 
 - title: "Pack Degust’arbre"
   title_detail: "Pack Degust’arbre"
-  online_booking: 1
-  tarif_adulte: 30
+  online_booking: 0
+  tarif_adulte: null
   tarif_enfant: null
   slug: "/pack-degust-arbre"
   category: "Grimpe d'arbres | Repas perché | Dégustation | Produits locaux"
