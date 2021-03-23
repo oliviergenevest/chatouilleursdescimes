@@ -49,7 +49,7 @@ module.exports = {
         path: `${__dirname}/config`,
       },
     },
-    {
+  /*  {
       resolve: `gatsby-source-facebook`,
       options: {
         places: [`chatouilleursdescimes`], // Can be either a numeric ID or the URL ID
@@ -58,7 +58,7 @@ module.exports = {
         },
         key: FACEBOOK_GRAPH_TOKEN, 
       },
-    },
+    },*/
     {
       resolve: 'gatsby-source-filesystem',
       options: {

@@ -317,7 +317,7 @@ const Index: React.FunctionComponent<PageProps> = ({ data: { bgImage, teaserImag
              
                 <p>Ouvert toute l'année, dès 7 ans, adapté handisport, découvrez la grimpe d'arbres sur des sites remarquables à Saint-Julien-de-Peyrolas, aux portes des Gorges de l'Ardèche.</p>                  
                 <p><a href={'https://www.facebook.com/'+`${siteConfig.facebookPageID}`} target="blank" title="page facebook des chatouilleurs des cimes" ><FaFacebook size="50px"/></a>
-                <br/>Retrouvez toutes les infos sur notre page <a href={'https://www.facebook.com/'+`${siteConfig.facebookPageID}`} target="blank" title="page facebook des chatouilleurs des cimes" >facebook</a> ou par téléphone au <span style={{'whiteSpace':'nowrap'}}>06 49 00 99 20</span>.
+                <br/>Retrouvez toutes les infos sur notre page <a href={'https://www.facebook.com/'+`${siteConfig.facebookPageID}`} target="blank" title="page facebook des chatouilleurs des cimes" >facebook</a> ou par téléphone au <span style={{'whiteSpace':'nowrap'}}>07 68 85 59 50</span>.
                 </p>
               </AnimatedBox>  
           </Section>

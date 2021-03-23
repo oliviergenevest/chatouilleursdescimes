@@ -18,6 +18,6 @@ module.exports = {
   // Manifest and Progress color
   themeColor: '#A3CD3B',
   backgroundColor: '#000',
-  tel: '+33 (0)6 49 00 99 20',
+  tel: '+33 (0)7 68 85 59 50',
   email: 'info@chatouilleurs-des-cimes.com',
 }

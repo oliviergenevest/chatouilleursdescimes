@@ -68,7 +68,7 @@ const SubHeader = ({ color }: LayoutProps) => {
                 justifyContent="space-between" 
                 style={{'backgroundColor':theme.colors.secondary,'fontSize':'14px','color':'white'}}>
               	<Left>
-               		Saint-Julien-de-Peyrolas (Gard)
+               		Bollène (Vaucluse)
                </Left>
                <Right>
               	 	

@@ -105,7 +105,7 @@ const Slideshow = () => {
 
 export default Slideshow
 
-
+/*
 export const query = graphql`
   query SlideshowQuery {
     img1: file(sourceInstanceName: { eq: "images" }, name: { eq: "background" }) {
@@ -130,4 +130,4 @@ export const query = graphql`
       }
     }
   }
-`
+`*/

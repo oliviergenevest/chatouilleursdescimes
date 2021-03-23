@@ -23,8 +23,8 @@ const ImageWrapper = styled.div`
 `
 
 const FacebookWallPosts = () => {
-
-  const data = useStaticQuery(query)
+return "plop"
+/*  const data = useStaticQuery(query)
 //console.log(data)
 
   return (
@@ -45,12 +45,12 @@ const FacebookWallPosts = () => {
                   </Moment></p>
 
     </Flex>
-  )
+  )*/
 }
 
 
 export default FacebookWallPosts
-
+/*
 export const query = graphql`
   query FacebookQuery {
      allFacebookPosts(filter:{ message:{ne: null}},sort: { fields: [created_time], order: [DESC] }limit:3) {
@@ -72,4 +72,4 @@ export const query = graphql`
     }
   }
   }
-`
+`*/

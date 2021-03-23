@@ -39,11 +39,8 @@ margin-bottom:1em;
        
         <PBox p={[6, 8, 10]} bc='#a4ce3b40'>
         
-          <p><b>Chatouilleurs des cimes (Accroche Aventure)</b></p>
-             <p> 281, Chemin de Lafèbre<br/>
-            30760 St-Julien de Peyrolas<br/>
-            France
-          </p>
+          <p><b>Chatouilleurs des cimes (Bollène Aventure)</b></p>
+         
          <address>
             <p><a href={"tel:"+`${siteConfig.tel}`}>{siteConfig.tel}</a></p>
            <p><a href={"mailto:"+`${siteConfig.email}`}>{siteConfig.email}</a></p>

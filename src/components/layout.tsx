@@ -10,7 +10,7 @@ import 'typeface-boogaloo'
 import 'typeface-acme'
 import { AnimatedBox, AnimatedFlex, Box, Flex, Button } from '../elements'
 import Popup from '../components/popup'
-import FacebookWallPosts from '../components/facebook-post/facebook-wall-posts.tsx'
+/*import FacebookWallPosts from '../components/facebook-post/facebook-wall-posts.tsx'*/
 import theme from '../../config/theme'
 import reset from '../styles/reset'
 import { FaWifi, FaBullhorn, FaTimes } from 'react-icons/fa'
@@ -369,7 +369,7 @@ const Layout = ({ children, color, header, footer }: LayoutProps) => {
              </ScrollLock>
          
 
-          <Headroom calcHeightOnResize disableInlineStyles>
+          <Headroom >
            <SubHeader/>
            <Header bg={color} as="header" m={0} py={[2,4,6]}   px={[6, 6, 8, 10]}  >
 
@@ -407,10 +407,10 @@ const Layout = ({ children, color, header, footer }: LayoutProps) => {
           <Main>{children}</Main>
           <Partenaires/>
           {footer && <Footer/>}
-          <ButtonPopup onClick={() => setPopupIsOpen(!isPopupOpen)} style={ButtonPopupAnimation}>
+        {/*  <ButtonPopup onClick={() => setPopupIsOpen(!isPopupOpen)} style={ButtonPopupAnimation}>
             <FaWifi size={20} style={{    position:'absolute', left:'1rem'}} /><span>NEWS</span>
           </ButtonPopup>
-          <Popup isOpen={isPopupOpen} setIsOpen={setPopupIsOpen} ><FacebookWallPosts/></Popup>   
+          <Popup isOpen={isPopupOpen} setIsOpen={setPopupIsOpen} >SUPER POPUP POUR LES ACTUALITES</Popup>   */}
         </Wrapper>
 
 

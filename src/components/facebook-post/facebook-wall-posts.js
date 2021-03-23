@@ -12,17 +12,17 @@ const Left = styled(Box)`
 `
 
 const FacebookWallPosts = () => {
-
-  data = useStaticQuery(query)
+return "plop"
+  /*data = useStaticQuery(query)
 
   return (
 <h1>{data.edges.node[0].message}</h1>
-  )
+  )*/
 }
 
 
 export default FacebookWallPosts
-
+/*
 export const query = graphql`
   query Facebook {
     facebook: allFacebookPosts(filter:{ message:{ne: null}},limit:3) {
@@ -43,4 +43,4 @@ export const query = graphql`
     }
   }
   }
-`
+`*/
