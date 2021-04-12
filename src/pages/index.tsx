@@ -80,7 +80,7 @@ const Illustration = styled.div`
   // gradient noir => transparent sur zone illustration
   &::after{
     content:'';
-     background: linear-gradient(to left, rgba(0, 0, 0, 0.7), rgba(0, 24, 49, 0));
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.7), rgba(0, 24, 49, 0));
    
     position: absolute;
     top: 0;
@@ -258,7 +258,8 @@ const AreaPacks = styled(animated.div)`
 /*Passer dans data les alias des requetes de données si besoin , cf en bas de page*/
 const Index: React.FunctionComponent<PageProps> = ({ data: { bgImage, teaserImage, teaserImageElephant,packs } }) => { 
   const [isBookingFormOpen, setBookingFormOpened] = useState(false)
-  const handleClick = () => setBookingFormOpened(!isBookingFormOpen) 
+  /* const handleClick = () => setBookingFormOpened(!isBookingFormOpen) */
+  const handleClick = (e) => GUIDAP.booking.call('bolleneaventure.guidap.co', 'pu8dkHrUlK1mGcSPazjA3fJbFVXDY4yT6ZsC?lang=fr', e)
   
  
 

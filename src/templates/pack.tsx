@@ -197,8 +197,10 @@ const Pack: React.FunctionComponent<PageProps> = ({ data: { pack, images } }) =>
   const titleAnimation = useSpring({ config: config.slow, delay: 300, from: { opacity: 0 }, to: { opacity: 1 } })
   const descAnimation = useSpring({ config: config.slow, delay: 600, from: { opacity: 0 }, to: { opacity: 1 } })
   const imagesAnimation = useSpring({ config: config.slow, delay: 800, from: { opacity: 0 }, to: { opacity: 1 } })
-   const sideBarAnimation = useSpring({ config: config.slow, delay: 900, from: { opacity: 0,transform:'translate3d(30px, 0, 0)' }, to: { opacity: 1, transform: 'translate3d(0, 0, 0)'  } })
+  const sideBarAnimation = useSpring({ config: config.slow, delay: 900, from: { opacity: 0,transform:'translate3d(30px, 0, 0)' }, to: { opacity: 1, transform: 'translate3d(0, 0, 0)'  } })
 
+  const handleClick = (e) => GUIDAP.booking.call('bolleneaventure.guidap.co', 'pu8dkHrUlK1mGcSPazjA3fJbFVXDY4yT6ZsC?lang=fr', e)
+  
   return (
     <Layout color={pack.color}>
       <SEO
@@ -250,7 +252,7 @@ const Pack: React.FunctionComponent<PageProps> = ({ data: { pack, images } }) =>
           }
          </Pricing>
          { pack.online_booking ? 
-           <PButton color={theme.colors.secondary} py={4} px={8} to="/reservation">
+           <PButton color={theme.colors.secondary} py={4} px={8}  onClick={ handleClick } to="#">
            Réservez en ligne dès maintenant !
           </PButton>
             :
